@@ -108,6 +108,15 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
         viewModel.selectedImg.observe(on: self) { [weak self] image in
             self?.updateImageView(image)
         }
+        
+        viewModel.needReset.observe(on: self) { [weak self] _ in
+            self?.resetSg()
+        }
+    }
+    
+    private func resetSg() {
+        self.sizeLevel.selectedSegmentIndex = 0
+        self.qualityLevel.selectedSegmentIndex = 0
     }
     
     private func updateImageView(_ imageData: ImageWithMetadata?) {
@@ -142,7 +151,7 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
                 self?.imgTimeLB.isHidden = true
             }
             if let image = UIImage(data: img.imgData)?.cgImage {
-                self?.imgSizeLB.text = "\(image.width) x \(image.height) | \(formatByteCount(img.originImgData.count))"
+                self?.imgSizeLB.text = "\(image.width) x \(image.height) | \(formatByteCount(img.imgData.count))"
                 
                 // 사람이 읽기 좋은 파일 크기 형식으로 변환
                 func formatByteCount(_ byteCount: Int) -> String {

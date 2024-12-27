@@ -194,7 +194,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="edr-kn-QvN" firstAttribute="leading" secondItem="1II-7s-yCj" secondAttribute="leading" constant="20" id="BoJ-w1-HhF"/>
                                                     <constraint firstItem="Bbl-Ux-ney" firstAttribute="top" secondItem="yzo-1Z-d32" secondAttribute="top" id="CMj-yP-4Or"/>
@@ -268,7 +268,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="EOA-rv-5K8" firstAttribute="leading" secondItem="W0j-ZE-4Wf" secondAttribute="leading" constant="20" id="DEr-jt-Fwr"/>
                                                     <constraint firstAttribute="trailing" secondItem="EOA-rv-5K8" secondAttribute="trailing" constant="20" id="K2K-yg-lFP"/>
@@ -278,7 +278,10 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Irh-dq-UgL">
                                                 <rect key="frame" x="0.0" y="686" width="393" height="69"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="lHu-oI-BmK"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1c-zi-WvI">
                                                 <rect key="frame" x="0.0" y="755" width="393" height="90"/>
@@ -313,7 +316,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="FQZ-Fg-G8C" secondAttribute="bottom" constant="20" id="WA8-Kl-3DP"/>
                                                     <constraint firstItem="FQZ-Fg-G8C" firstAttribute="leading" secondItem="Z1c-zi-WvI" secondAttribute="leading" constant="20" id="aLy-vu-3GB"/>

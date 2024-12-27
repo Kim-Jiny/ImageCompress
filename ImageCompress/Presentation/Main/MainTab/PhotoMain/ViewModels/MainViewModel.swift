@@ -50,6 +50,7 @@ protocol MainViewModelOutput {
     var photoLibraryPermission: Observable<Bool?> { get }
     var photoLibraryOnlyAddPermission: Observable<Bool?> { get }
     var selectedImg: Observable<ImageWithMetadata?> { get }
+    var needReset: Observable<Void?> { get }
 }
 
 // MainViewModel 타입: Input과 Output을 모두 결합한 타입
@@ -80,6 +81,7 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     let photoLibraryPermission: Observable<Bool?> = Observable(nil) // 사진 라이브러리 권한 상태
     let photoLibraryOnlyAddPermission: Observable<Bool?> = Observable(nil) // 사진 라이브러리 추가 권한 상태
     var selectedImg: Observable<ImageWithMetadata?> = Observable(nil) // 선택된 이미지
+    var needReset: Observable<Void?> = Observable(nil)
     
     // MARK: - Init (초기화)
     init(
@@ -285,20 +287,15 @@ extension DefaultMainViewModel {
     
     func changeImageSize(level: Int) {
         guard let data = self.selectedImg.value, let cgData = UIImage(data: data.originImgData)?.cgImage else { return }
-        print(cgData.width)
-        print(cgData.height)
         switch level {
         case 0:
-            self.selectedImg.value?.imgData = data.originImgData
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width), CGFloat(cgData.height)))
         case 1:
             self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4 * 3), CGFloat(cgData.height / 4 * 3)))
-            print("\(cgData.width / 4 * 3) \(cgData.height / 4 * 3)")
         case 2:
             self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4 * 2), CGFloat(cgData.height / 4 * 2)))
-            print("\(cgData.width / 4 * 2) \(cgData.height / 4 * 2)")
         case 3:
             self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4), CGFloat(cgData.height / 4)))
-            print("\(cgData.width / 4) \(cgData.height / 4)")
         case 4:
             //TODO: 커스텀 가로 세로를 보여줘야함.
             return
@@ -312,6 +309,7 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true, completion: nil)
+        self.needReset.value = .none
         for result in results {
             result.itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, error in
                 guard let data = data, error == nil else { 
@@ -320,7 +318,7 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
                 }
                 
                 let asset = result.assetIdentifier
-                var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", originImgData: data, imgData: data, metaData: [:], asset: nil)
+                var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", originImgData: data, imgData: data, metaData: [:], asset: nil, imgSize: UIImage(data: data)?.pixelSize() ?? .zero, imgQuality: 1)
                 // PHPickerResult에서 PHAsset 추출
                 if let assetIdentifier = result.assetIdentifier,
                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetIdentifier], options: nil).firstObject {
@@ -357,5 +355,4 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
         }
     }
     
-
 }

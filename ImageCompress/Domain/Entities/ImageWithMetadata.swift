@@ -14,4 +14,6 @@ struct ImageWithMetadata {
     var imgData: Data
     var metaData: [String: Any]
     var asset: PHAsset?
+    var imgSize: CGSize
+    var imgQuality: CGFloat
 }
