@@ -32,7 +32,7 @@ class MainViewController: UITabBarController, StoryboardInstantiable {
     }
     
     private func bind(to viewModel: MainViewModel) {
-        viewModel.typeItems.observe(on: self) { [weak self] _ in self?.updateItems() }
+        
     }
     
     // MARK: - Private

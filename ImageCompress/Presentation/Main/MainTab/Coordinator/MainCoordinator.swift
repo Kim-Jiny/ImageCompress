@@ -10,7 +10,6 @@ import UIKit
 
 protocol MainCoordinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
-    func makeQRDetailsViewController(qr: QRItem) -> QRDetailViewController
 }
 
 
@@ -29,16 +28,11 @@ final class MainCoordinator {
     
     func start() {
         // Note: here we keep strong reference with actions, this way this flow do not need to be strong referenced
-        let actions = MainViewModelActions(showDetail: showQRDetails)
+        let actions = MainViewModelActions()
         let vc = dependencies.makeMainViewController(actions: actions)
         
         navigationController?.pushViewController(vc, animated: false)
         mainVC = vc
-    }
-    
-    private func showQRDetails(qr: QRItem) {
-        let vc = dependencies.makeQRDetailsViewController(qr: qr)
-        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

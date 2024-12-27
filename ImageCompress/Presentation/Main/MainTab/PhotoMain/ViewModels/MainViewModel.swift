@@ -13,7 +13,6 @@ import PhotosUI
 
 // MARK: - Actions (ViewModel에서 호출될 액션 정의)
 struct MainViewModelActions {
-    let showDetail: (QRItem) -> Void // QR 항목 세부 사항을 보여주는 액션
 }
 
 // MARK: - MainViewModel의 Input, Output 정의
@@ -21,16 +20,10 @@ struct MainViewModelActions {
 // Input 프로토콜: 뷰에서 호출되는 메서드들
 protocol MainViewModelInput {
     func viewDidLoad()
-    func didSelectItem(at index: Int)
 //    func downloadImage(image: ImageWithMetadata, completion: @escaping (Bool) -> Void)
     func openAppSettings()
-    func checkCameraPermission()
     func checkPhotoLibraryOnlyAddPermission()
     func checkPhotoLibraryPermission()
-    func removeMyQR(_ item: QRItem)
-    func saveMyQRList()
-    func updateQRItem(_ item: QRItem)
-    func fetchMyQRList()
     func loadLatestVersion(completion: @escaping (String?) -> Void)
     func openImagePicker(_ sender: UIViewController)
     func shareImage(_ sender: UIViewController)
@@ -42,11 +35,7 @@ protocol MainViewModelInput {
 
 // Output 프로토콜: 뷰모델에서 뷰로 전달될 데이터들
 protocol MainViewModelOutput {
-    var typeItems: Observable<[QRTypeItemViewModel]> { get }
-    var myQRItems: Observable<[QRItem]> { get }
     var error: Observable<String> { get }
-    var scannedResult: Observable<String> { get }
-    var cameraPermission: Observable<Bool?> { get }
     var photoLibraryPermission: Observable<Bool?> { get }
     var photoLibraryOnlyAddPermission: Observable<Bool?> { get }
     var selectedImg: Observable<ImageWithMetadata?> { get }
@@ -63,9 +52,6 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     // MARK: - Dependencies (필수 의존성들)
     private let imageUseCase: ImageUseCase
     private let permissionUseCase: PermissionUseCase
-    private let getQRListUseCase: GetQRListUseCase
-    private let qrScannerUseCase: QRScannerUseCase
-    private let qrItemUseCase: QRItemUseCase
     private let fetchAppVersionUseCase: FetchAppVersionUseCase
     private let actions: MainViewModelActions?
     private let mainQueue: DispatchQueueType
@@ -73,11 +59,7 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     private var ListLoadTask: Cancellable? { willSet { ListLoadTask?.cancel() } } // QR 항목 로딩을 위한 Cancellable 객체
     
     // MARK: - Output (출력 프로퍼티)
-    let typeItems: Observable<[QRTypeItemViewModel]> = Observable([]) // QR 항목 뷰모델 리스트
-    let myQRItems: Observable<[QRItem]> = Observable([]) // QR 항목 데이터
     let error: Observable<String> = Observable("") // 오류 메시지
-    let scannedResult: Observable<String> = Observable("") // 스캔된 결과
-    let cameraPermission: Observable<Bool?> = Observable(nil) // 카메라 권한 상태
     let photoLibraryPermission: Observable<Bool?> = Observable(nil) // 사진 라이브러리 권한 상태
     let photoLibraryOnlyAddPermission: Observable<Bool?> = Observable(nil) // 사진 라이브러리 추가 권한 상태
     var selectedImg: Observable<ImageWithMetadata?> = Observable(nil) // 선택된 이미지
@@ -87,65 +69,20 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     init(
         imageUseCase: ImageUseCase,
         permissionUseCase: PermissionUseCase,
-        getQRListUseCase: GetQRListUseCase,
-        qrScannerUseCase: QRScannerUseCase,
-        qrItemUseCase: QRItemUseCase,
         fetchAppVersionUseCase: FetchAppVersionUseCase,
         actions: MainViewModelActions? = nil,
         mainQueue: DispatchQueueType = DispatchQueue.main
     ) {
         self.imageUseCase = imageUseCase
         self.permissionUseCase = permissionUseCase
-        self.getQRListUseCase = getQRListUseCase
-        self.qrScannerUseCase = qrScannerUseCase
-        self.qrItemUseCase = qrItemUseCase
         self.fetchAppVersionUseCase = fetchAppVersionUseCase
         self.actions = actions
         self.mainQueue = mainQueue
     }
 
     // MARK: - Private Methods (비공개 메서드)
-
-    // QR 항목 로딩
     private func load() {
-        ListLoadTask = getQRListUseCase.execute(
-            completion: { [weak self] result in
-                self?.mainQueue.async {
-                    switch result {
-                    case .success(let qrTypes):
-                        self?.fetchList(qrTypes) // 항목을 성공적으로 가져온 경우
-                    case .failure(let error):
-                        self?.handle(error: error) // 실패 시 오류 처리
-                    }
-                }
-            }
-        )
-    }
-    
-    // QR 항목 뷰모델로 변환하여 typeItems에 설정
-    private func fetchList(_ qrTypes: [QRTypeItem]) {
-        typeItems.value = qrTypes.map(QRTypeItemViewModel.init)
-    }
-    
-    func removeMyQR(_ item: QRItem) {
-        qrItemUseCase.removeQRItem(item)
-        fetchMyQRList()
-    }
-    
-    func saveMyQRList() {
-        qrItemUseCase.saveQRList(myQRItems.value)
-    }
-    
-    // 저장된 내 QRList Fetch
-    func fetchMyQRList() {
-        myQRItems.value = qrItemUseCase.getQRItems() ?? []
-    }
-    
-    func updateQRItem(_ item: QRItem) {
-        if let index = myQRItems.value.firstIndex(where: { $0.id == item.id }) {
-            myQRItems.value[index] = item // 기존 항목을 새로운 항목으로 업데이트
-            qrItemUseCase.updateQRItem(item) // 저장소에서도 업데이트
-        }
+        
     }
     
     // 오류 처리
@@ -174,12 +111,6 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
         }
     }
     
-    // 카메라 권한 확인
-    func checkCameraPermission() {
-        permissionUseCase.checkCameraPermission { [weak self] isPermission in
-            self?.cameraPermission.value = isPermission
-        }
-    }
 
     // MARK: - Image Download (이미지 다운로드)
     
@@ -215,12 +146,6 @@ extension DefaultMainViewModel {
     func viewDidLoad() {
         load()
     }
-    
-    // 항목 선택 시 호출
-    func didSelectItem(at index: Int) {
-        actions?.showDetail(myQRItems.value[index]) // 선택된 항목에 대한 세부 정보 표시
-    }
-    
     
      // ImagePicker 열기
      func openImagePicker(_ sender: UIViewController) {
@@ -317,7 +242,6 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
                     return
                 }
                 
-                let asset = result.assetIdentifier
                 var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", originImgData: data, imgData: data, metaData: [:], asset: nil, imgSize: UIImage(data: data)?.pixelSize() ?? .zero, imgQuality: 1)
                 // PHPickerResult에서 PHAsset 추출
                 if let assetIdentifier = result.assetIdentifier,

@@ -35,9 +35,6 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var qualityLevel: UISegmentedControl!
     @IBOutlet weak var sizeLevel: UISegmentedControl!
     
-    private var isFirstSelectionDone = false
-    private var colorPickerManager = ColorPickerManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

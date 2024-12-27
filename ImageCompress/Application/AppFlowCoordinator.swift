@@ -38,23 +38,10 @@ extension AppFlowCoordinator: MainCoordinatorDependencies {
         DefaultMainViewModel(
             imageUseCase: makeImageUseCase(),
             permissionUseCase: makePermissionUseCase(),
-            getQRListUseCase: makeGetQRListUseCase(),
-            qrScannerUseCase: makeQRScannerUseCase(),
-            qrItemUseCase: makeQRItemUseCase(),
             fetchAppVersionUseCase: makeFetchAppVersionUseCase(),
             actions: actions
         )
     }
-    
-    func makeQRDetailsViewController(qr: QRItem) -> QRDetailViewController {
-        QRDetailViewController.create(with: makeMoviesDetailsViewModel(qr: qr))
-    }
-    
-    
-    func makeMoviesDetailsViewModel(qr: QRItem) -> QRDetailViewModel {
-        DefaultQRDetailViewModel(qrData: qr)
-    }
-    
     
     // MARK: - Use Cases
     func makeImageUseCase() -> ImageUseCase {
@@ -65,18 +52,6 @@ extension AppFlowCoordinator: MainCoordinatorDependencies {
         PermissionUseCaseImpl(repository: makePermissionRepository())
     }
     
-    func makeGetQRListUseCase() -> GetQRListUseCase {
-        DefaultGetQRListUseCase(qrListRepository: makeQRListRepository())
-    }
-    
-    func makeQRScannerUseCase() -> QRScannerUseCase {
-        QRScannerUseCaseImpl(repository: makeQRScannerRepository())
-    }
-    
-    func makeQRItemUseCase() -> QRItemUseCase {
-        QRItemUseCase(repository: makeQRItemRepository())
-    }
-    
     func makeFetchAppVersionUseCase() -> FetchAppVersionUseCase {
         DefaultFetchAppVersionUseCase(repository: makeAppVersionRepository())
     }
@@ -85,18 +60,6 @@ extension AppFlowCoordinator: MainCoordinatorDependencies {
     private func makePermissionRepository() -> PermissionRepository {
         PermissionRepositoryImpl(cameraPermissionDataSource: makeCameraPermissionDataSource(),
                                  photoLibraryPermissionDataSource: makePhotoLibraryPermissionDataSource())
-    }
-    
-    private func makeQRListRepository() -> QRListRepository {
-        DefaultRQListRepository()
-    }
-    
-    private func makeQRScannerRepository() -> QRScannerRepository {
-        QRScannerRepositoryImpl()
-    }
-    
-    private func makeQRItemRepository() -> QRItemRepository {
-        QRItemRepository()
     }
     
     private func makeAppVersionRepository() -> AppVersionRepository {

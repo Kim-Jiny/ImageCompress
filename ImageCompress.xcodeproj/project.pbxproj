@@ -7,27 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		303398CF2CDDE76800977E8A /* QRTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398CD2CDDE76800977E8A /* QRTypeCollectionViewCell.swift */; };
-		303398D02CDDE76800977E8A /* QRTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303398CE2CDDE76800977E8A /* QRTypeCollectionViewCell.xib */; };
 		303398DD2CDDFD2A00977E8A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398DC2CDDFD2A00977E8A /* UIView+Extensions.swift */; };
-		303398DF2CE19EE200977E8A /* ScanQRTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398DE2CE19EE200977E8A /* ScanQRTabViewController.swift */; };
-		303398E82CE1A8EA00977E8A /* QRScannerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398E72CE1A8EA00977E8A /* QRScannerUseCase.swift */; };
-		303398EA2CE1A90100977E8A /* QRScannerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398E92CE1A90100977E8A /* QRScannerRepository.swift */; };
 		303398ED2CE1A93A00977E8A /* CameraPermissionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398EC2CE1A93A00977E8A /* CameraPermissionDataSource.swift */; };
 		303398F32CE1F60700977E8A /* PhotoLibraryPermissionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398F22CE1F60700977E8A /* PhotoLibraryPermissionDataSource.swift */; };
 		303398F52CE1F63A00977E8A /* PermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398F42CE1F63A00977E8A /* PermissionUseCase.swift */; };
 		303398F72CE1F6F800977E8A /* PermissionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303398F62CE1F6F800977E8A /* PermissionRepository.swift */; };
-		303399012CE44CD900977E8A /* QRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303399002CE44CD900977E8A /* QRItem.swift */; };
 		303399032CE4714100977E8A /* TimestampProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303399022CE4714100977E8A /* TimestampProvider.swift */; };
-		303399092CE4728400977E8A /* QRItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303399082CE4728400977E8A /* QRItemUseCase.swift */; };
-		3033990B2CE472D400977E8A /* QRItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3033990A2CE472D400977E8A /* QRItemRepository.swift */; };
-		303399102CE482D000977E8A /* MyQRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3033990E2CE482D000977E8A /* MyQRTableViewCell.swift */; };
-		303399112CE482D000977E8A /* MyQRTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3033990F2CE482D000977E8A /* MyQRTableViewCell.xib */; };
-		303399142CE4A89700977E8A /* QRDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303399132CE4A89600977E8A /* QRDetailView.swift */; };
-		303399162CE4A91300977E8A /* QRDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303399152CE4A91300977E8A /* QRDetailView.xib */; };
 		303399182CE5F61400977E8A /* AppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303399172CE5F61400977E8A /* AppVersionRepository.swift */; };
 		3033991A2CE5F63200977E8A /* FetchAppVersionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303399192CE5F63200977E8A /* FetchAppVersionUseCase.swift */; };
-		3033991C2CE71D8400977E8A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3033991B2CE71D8400977E8A /* Localizable.xcstrings */; };
 		3052B1D12D1D2A9900145BC3 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052B1D02D1D2A9900145BC3 /* ImageUseCase.swift */; };
 		3052B1D32D1D2ABF00145BC3 /* ImageWithMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052B1D22D1D2ABF00145BC3 /* ImageWithMetadata.swift */; };
 		3052B1D52D1D2F0A00145BC3 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052B1D42D1D2F0A00145BC3 /* UIImage+Extensions.swift */; };
@@ -38,37 +25,28 @@
 		30BBA9FB2CB501E400A84090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BBA9FA2CB501E400A84090 /* Assets.xcassets */; };
 		30BBA9FE2CB501E400A84090 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 30BBA9FD2CB501E400A84090 /* Base */; };
 		30BBAA092CB501E400A84090 /* ImageCompressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA082CB501E400A84090 /* ImageCompressTests.swift */; };
-		30BBAA132CB501E400A84090 /* WithRunningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA122CB501E400A84090 /* WithRunningUITests.swift */; };
-		30BBAA152CB501E400A84090 /* WithRunningUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA142CB501E400A84090 /* WithRunningUITestsLaunchTests.swift */; };
+		30BBAA132CB501E400A84090 /* ImageCompressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA122CB501E400A84090 /* ImageCompressUITests.swift */; };
+		30BBAA152CB501E400A84090 /* ImageCompressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA142CB501E400A84090 /* ImageCompressUITestsLaunchTests.swift */; };
 		30BBAA232CB5028000A84090 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA222CB5028000A84090 /* AppFlowCoordinator.swift */; };
 		30BBAA262CB5030C00A84090 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA252CB5030C00A84090 /* MainCoordinator.swift */; };
 		30BBAA2B2CB5038E00A84090 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA2A2CB5038E00A84090 /* MainViewController.swift */; };
 		30BBAA2E2CB503D500A84090 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA2D2CB503D500A84090 /* MainViewModel.swift */; };
 		30BBAA322CB5057D00A84090 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA312CB5057D00A84090 /* Observable.swift */; };
-		30BBAA342CB506C300A84090 /* QRTypeItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA332CB506C300A84090 /* QRTypeItemViewModel.swift */; };
 		30BBAA372CB5075C00A84090 /* DispatchQueueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA362CB5075C00A84090 /* DispatchQueueType.swift */; };
 		30BBAA392CB5081800A84090 /* XibInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA382CB5081800A84090 /* XibInstantiable.swift */; };
 		30BBAA3C2CB5096F00A84090 /* UIViewController+AddBehaviors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA3B2CB5096F00A84090 /* UIViewController+AddBehaviors.swift */; };
 		30BBAA3F2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA3E2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift */; };
 		30BBAA412CB509D100A84090 /* BlackStyleNavigationBarBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA402CB509D100A84090 /* BlackStyleNavigationBarBehavior.swift */; };
-		30BBAA492CB5140F00A84090 /* ResizeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA462CB5140F00A84090 /* ResizeTabViewController.swift */; };
 		30BBAA4F2CB5143F00A84090 /* CompressTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA4C2CB5143F00A84090 /* CompressTabViewController.swift */; };
 		30BBAA532CB517AA00A84090 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA522CB517AA00A84090 /* StoryboardInstantiable.swift */; };
 		30BBAA552CB517E400A84090 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BBAA542CB517E400A84090 /* MainViewController.storyboard */; };
 		30BBAA592CB522FA00A84090 /* AppColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BBAA582CB522FA00A84090 /* AppColors.xcassets */; };
 		30BBAA5E2CB8FFCE00A84090 /* AppSettingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA5D2CB8FFCE00A84090 /* AppSettingTabViewController.swift */; };
-		30BBAA692CB9025E00A84090 /* QRTypeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA682CB9025E00A84090 /* QRTypeItem.swift */; };
-		30BBAA6F2CB9085B00A84090 /* QRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BBAA6E2CB9085B00A84090 /* QRDetailViewController.xib */; };
-		30BBAA702CB9085B00A84090 /* QRDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA6D2CB9085B00A84090 /* QRDetailViewController.swift */; };
-		30BBAA722CB9091600A84090 /* QRDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA712CB9091600A84090 /* QRDetailViewModel.swift */; };
 		30BBAA772CB90A5C00A84090 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA762CB90A5C00A84090 /* AccessibilityIdentifier.swift */; };
 		30BBAA7C2CB9121B00A84090 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA7B2CB9121B00A84090 /* UserDefaultsManager.swift */; };
-		30BBAA802CB9130500A84090 /* QRListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA7F2CB9130500A84090 /* QRListRepository.swift */; };
-		30BBAA822CB9131700A84090 /* DefaultRQListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA812CB9131700A84090 /* DefaultRQListRepository.swift */; };
 		30BBAA842CB9137800A84090 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA832CB9137800A84090 /* Cancellable.swift */; };
 		30BBAA882CB913E500A84090 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA872CB913E500A84090 /* NetworkService.swift */; };
 		30BBAA8A2CB9141800A84090 /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA892CB9141800A84090 /* RepositoryTask.swift */; };
-		30BBAA8D2CB9166300A84090 /* GetQRListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA8C2CB9166300A84090 /* GetQRListUseCase.swift */; };
 		30E4AE4C2CEAD42800B6C503 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 30E4AE4B2CEAD42800B6C503 /* GoogleMobileAds */; };
 		30E4AE4F2CEAD53E00B6C503 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE4E2CEAD53E00B6C503 /* Config.swift */; };
 		30E4AE512CEB1E4900B6C503 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E4AE502CEB1E4900B6C503 /* GoogleService-Info.plist */; };
@@ -77,7 +55,6 @@
 		30E4AE582CEB1F2600B6C503 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 30E4AE572CEB1F2600B6C503 /* FirebaseCrashlytics */; };
 		30E4AE5A2CEB1F2600B6C503 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 30E4AE592CEB1F2600B6C503 /* FirebaseDatabase */; };
 		30E4AE662CEB2D6A00B6C503 /* AdmobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */; };
-		30E4AE6F2CEB3F2B00B6C503 /* ColorPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE6E2CEB3F2B00B6C503 /* ColorPickerManager.swift */; };
 		30E4AE732CEC32AE00B6C503 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE722CEC32AE00B6C503 /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,27 +76,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		303398CD2CDDE76800977E8A /* QRTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRTypeCollectionViewCell.swift; sourceTree = "<group>"; };
-		303398CE2CDDE76800977E8A /* QRTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		303398DC2CDDFD2A00977E8A /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		303398DE2CE19EE200977E8A /* ScanQRTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRTabViewController.swift; sourceTree = "<group>"; };
-		303398E72CE1A8EA00977E8A /* QRScannerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerUseCase.swift; sourceTree = "<group>"; };
-		303398E92CE1A90100977E8A /* QRScannerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerRepository.swift; sourceTree = "<group>"; };
 		303398EC2CE1A93A00977E8A /* CameraPermissionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionDataSource.swift; sourceTree = "<group>"; };
 		303398F22CE1F60700977E8A /* PhotoLibraryPermissionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPermissionDataSource.swift; sourceTree = "<group>"; };
 		303398F42CE1F63A00977E8A /* PermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUseCase.swift; sourceTree = "<group>"; };
 		303398F62CE1F6F800977E8A /* PermissionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRepository.swift; sourceTree = "<group>"; };
-		303399002CE44CD900977E8A /* QRItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItem.swift; sourceTree = "<group>"; };
 		303399022CE4714100977E8A /* TimestampProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampProvider.swift; sourceTree = "<group>"; };
-		303399082CE4728400977E8A /* QRItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemUseCase.swift; sourceTree = "<group>"; };
-		3033990A2CE472D400977E8A /* QRItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemRepository.swift; sourceTree = "<group>"; };
-		3033990E2CE482D000977E8A /* MyQRTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRTableViewCell.swift; sourceTree = "<group>"; };
-		3033990F2CE482D000977E8A /* MyQRTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQRTableViewCell.xib; sourceTree = "<group>"; };
-		303399132CE4A89600977E8A /* QRDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailView.swift; sourceTree = "<group>"; };
-		303399152CE4A91300977E8A /* QRDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRDetailView.xib; sourceTree = "<group>"; };
 		303399172CE5F61400977E8A /* AppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionRepository.swift; sourceTree = "<group>"; };
 		303399192CE5F63200977E8A /* FetchAppVersionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAppVersionUseCase.swift; sourceTree = "<group>"; };
-		3033991B2CE71D8400977E8A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3052B1D02D1D2A9900145BC3 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
 		3052B1D22D1D2ABF00145BC3 /* ImageWithMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithMetadata.swift; sourceTree = "<group>"; };
 		3052B1D42D1D2F0A00145BC3 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -134,37 +98,28 @@
 		30BBAA042CB501E400A84090 /* ImageCompressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageCompressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BBAA082CB501E400A84090 /* ImageCompressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressTests.swift; sourceTree = "<group>"; };
 		30BBAA0E2CB501E400A84090 /* ImageCompressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageCompressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		30BBAA122CB501E400A84090 /* WithRunningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithRunningUITests.swift; sourceTree = "<group>"; };
-		30BBAA142CB501E400A84090 /* WithRunningUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithRunningUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		30BBAA122CB501E400A84090 /* ImageCompressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressUITests.swift; sourceTree = "<group>"; };
+		30BBAA142CB501E400A84090 /* ImageCompressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		30BBAA222CB5028000A84090 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		30BBAA252CB5030C00A84090 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		30BBAA2A2CB5038E00A84090 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		30BBAA2D2CB503D500A84090 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		30BBAA312CB5057D00A84090 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		30BBAA332CB506C300A84090 /* QRTypeItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRTypeItemViewModel.swift; sourceTree = "<group>"; };
 		30BBAA362CB5075C00A84090 /* DispatchQueueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueType.swift; sourceTree = "<group>"; };
 		30BBAA382CB5081800A84090 /* XibInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibInstantiable.swift; sourceTree = "<group>"; };
 		30BBAA3B2CB5096F00A84090 /* UIViewController+AddBehaviors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddBehaviors.swift"; sourceTree = "<group>"; };
 		30BBAA3E2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonEmptyTitleNavigationBarBehavior.swift; sourceTree = "<group>"; };
 		30BBAA402CB509D100A84090 /* BlackStyleNavigationBarBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackStyleNavigationBarBehavior.swift; sourceTree = "<group>"; };
-		30BBAA462CB5140F00A84090 /* ResizeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeTabViewController.swift; sourceTree = "<group>"; };
 		30BBAA4C2CB5143F00A84090 /* CompressTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressTabViewController.swift; sourceTree = "<group>"; };
 		30BBAA522CB517AA00A84090 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		30BBAA542CB517E400A84090 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		30BBAA582CB522FA00A84090 /* AppColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppColors.xcassets; sourceTree = "<group>"; };
 		30BBAA5D2CB8FFCE00A84090 /* AppSettingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingTabViewController.swift; sourceTree = "<group>"; };
-		30BBAA682CB9025E00A84090 /* QRTypeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRTypeItem.swift; sourceTree = "<group>"; };
-		30BBAA6D2CB9085B00A84090 /* QRDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailViewController.swift; sourceTree = "<group>"; };
-		30BBAA6E2CB9085B00A84090 /* QRDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRDetailViewController.xib; sourceTree = "<group>"; };
-		30BBAA712CB9091600A84090 /* QRDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailViewModel.swift; sourceTree = "<group>"; };
 		30BBAA762CB90A5C00A84090 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
 		30BBAA7B2CB9121B00A84090 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		30BBAA7F2CB9130500A84090 /* QRListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRListRepository.swift; sourceTree = "<group>"; };
-		30BBAA812CB9131700A84090 /* DefaultRQListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRQListRepository.swift; sourceTree = "<group>"; };
 		30BBAA832CB9137800A84090 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		30BBAA872CB913E500A84090 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		30BBAA892CB9141800A84090 /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
-		30BBAA8C2CB9166300A84090 /* GetQRListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQRListUseCase.swift; sourceTree = "<group>"; };
 		30C44DFC2CEE03FB004EEA79 /* ImageCompress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImageCompress.entitlements; sourceTree = "<group>"; };
 		30E4AE4E2CEAD53E00B6C503 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		30E4AE502CEB1E4900B6C503 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -174,7 +129,6 @@
 		30E4AE5E2CEB2B2500B6C503 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30E4AE5F2CEB2B2600B6C503 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobManager.swift; sourceTree = "<group>"; };
-		30E4AE6E2CEB3F2B00B6C503 /* ColorPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerManager.swift; sourceTree = "<group>"; };
 		30E4AE722CEC32AE00B6C503 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,15 +163,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		303398CC2CDDE73100977E8A /* QRTypeCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				303398CD2CDDE76800977E8A /* QRTypeCollectionViewCell.swift */,
-				303398CE2CDDE76800977E8A /* QRTypeCollectionViewCell.xib */,
-			);
-			path = QRTypeCollectionViewCell;
-			sourceTree = "<group>";
-		};
 		303398EB2CE1A92700977E8A /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,33 +170,6 @@
 				303398F22CE1F60700977E8A /* PhotoLibraryPermissionDataSource.swift */,
 			);
 			path = DataSources;
-			sourceTree = "<group>";
-		};
-		3033990C2CE4829200977E8A /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3033990D2CE4829C00977E8A /* MyQRTableViewCell */,
-				303398CC2CDDE73100977E8A /* QRTypeCollectionViewCell */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		3033990D2CE4829C00977E8A /* MyQRTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				3033990E2CE482D000977E8A /* MyQRTableViewCell.swift */,
-				3033990F2CE482D000977E8A /* MyQRTableViewCell.xib */,
-			);
-			path = MyQRTableViewCell;
-			sourceTree = "<group>";
-		};
-		303399122CE4A87800977E8A /* QRDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				303399132CE4A89600977E8A /* QRDetailView.swift */,
-				303399152CE4A91300977E8A /* QRDetailView.xib */,
-			);
-			path = QRDetailView;
 			sourceTree = "<group>";
 		};
 		30BBA9E52CB501E300A84090 = {
@@ -303,8 +221,8 @@
 		30BBAA112CB501E400A84090 /* ImageCompressUITests */ = {
 			isa = PBXGroup;
 			children = (
-				30BBAA122CB501E400A84090 /* WithRunningUITests.swift */,
-				30BBAA142CB501E400A84090 /* WithRunningUITestsLaunchTests.swift */,
+				30BBAA122CB501E400A84090 /* ImageCompressUITests.swift */,
+				30BBAA142CB501E400A84090 /* ImageCompressUITestsLaunchTests.swift */,
 			);
 			path = ImageCompressUITests;
 			sourceTree = "<group>";
@@ -330,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				30BBAA752CB9094200A84090 /* PhotoMain */,
-				30BBAA6A2CB9081E00A84090 /* QRDetail */,
 				30BBAA422CB509E700A84090 /* Coordinator */,
 				30BBAA3D2CB5099700A84090 /* Behaviors */,
 			);
@@ -349,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				30BBAA2D2CB503D500A84090 /* MainViewModel.swift */,
-				30BBAA332CB506C300A84090 /* QRTypeItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -380,7 +296,6 @@
 				30BBAA382CB5081800A84090 /* XibInstantiable.swift */,
 				30BBAA522CB517AA00A84090 /* StoryboardInstantiable.swift */,
 				30BBAA832CB9137800A84090 /* Cancellable.swift */,
-				30E4AE6E2CEB3F2B00B6C503 /* ColorPickerManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -421,7 +336,6 @@
 				30BBA9FF2CB501E400A84090 /* Info.plist */,
 				30BBA9FA2CB501E400A84090 /* Assets.xcassets */,
 				30BBAA582CB522FA00A84090 /* AppColors.xcassets */,
-				3033991B2CE71D8400977E8A /* Localizable.xcstrings */,
 				30A2B1CB2CE8C13B00063D92 /* InfoPlist.strings */,
 			);
 			path = Resources;
@@ -430,12 +344,9 @@
 		30BBAA5F2CB9005100A84090 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3033990C2CE4829200977E8A /* Cells */,
 				30BBAA2A2CB5038E00A84090 /* MainViewController.swift */,
 				30BBAA542CB517E400A84090 /* MainViewController.storyboard */,
 				30BBAA4C2CB5143F00A84090 /* CompressTabViewController.swift */,
-				30BBAA462CB5140F00A84090 /* ResizeTabViewController.swift */,
-				303398DE2CE19EE200977E8A /* ScanQRTabViewController.swift */,
 				30BBAA5D2CB8FFCE00A84090 /* AppSettingTabViewController.swift */,
 			);
 			path = Views;
@@ -454,43 +365,14 @@
 		30BBAA672CB9025000A84090 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				303399002CE44CD900977E8A /* QRItem.swift */,
-				30BBAA682CB9025E00A84090 /* QRTypeItem.swift */,
 				3052B1D22D1D2ABF00145BC3 /* ImageWithMetadata.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		30BBAA6A2CB9081E00A84090 /* QRDetail */ = {
-			isa = PBXGroup;
-			children = (
-				30BBAA742CB9092100A84090 /* ViewModels */,
-				30BBAA732CB9091A00A84090 /* Views */,
-			);
-			path = QRDetail;
-			sourceTree = "<group>";
-		};
-		30BBAA732CB9091A00A84090 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				30BBAA6D2CB9085B00A84090 /* QRDetailViewController.swift */,
-				30BBAA6E2CB9085B00A84090 /* QRDetailViewController.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		30BBAA742CB9092100A84090 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				30BBAA712CB9091600A84090 /* QRDetailViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		30BBAA752CB9094200A84090 /* PhotoMain */ = {
 			isa = PBXGroup;
 			children = (
-				303399122CE4A87800977E8A /* QRDetailView */,
 				30BBAA2C2CB503C500A84090 /* ViewModels */,
 				30BBAA5F2CB9005100A84090 /* Views */,
 			);
@@ -510,7 +392,6 @@
 			children = (
 				30E4AE4D2CEAD53100B6C503 /* Admob */,
 				30BBAA7A2CB911CE00A84090 /* Utils */,
-				30BBAA812CB9131700A84090 /* DefaultRQListRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -536,9 +417,6 @@
 		30BBAA7E2CB912ED00A84090 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3033990A2CE472D400977E8A /* QRItemRepository.swift */,
-				30BBAA7F2CB9130500A84090 /* QRListRepository.swift */,
-				303398E92CE1A90100977E8A /* QRScannerRepository.swift */,
 				303398F62CE1F6F800977E8A /* PermissionRepository.swift */,
 				303399172CE5F61400977E8A /* AppVersionRepository.swift */,
 			);
@@ -564,10 +442,7 @@
 		30BBAA8B2CB9164F00A84090 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				30BBAA8C2CB9166300A84090 /* GetQRListUseCase.swift */,
-				303398E72CE1A8EA00977E8A /* QRScannerUseCase.swift */,
 				303398F42CE1F63A00977E8A /* PermissionUseCase.swift */,
-				303399082CE4728400977E8A /* QRItemUseCase.swift */,
 				303399192CE5F63200977E8A /* FetchAppVersionUseCase.swift */,
 				3052B1D02D1D2A9900145BC3 /* ImageUseCase.swift */,
 			);
@@ -715,14 +590,9 @@
 			files = (
 				30A2B1C92CE8C13B00063D92 /* InfoPlist.strings in Resources */,
 				30BBA9FB2CB501E400A84090 /* Assets.xcassets in Resources */,
-				303399112CE482D000977E8A /* MyQRTableViewCell.xib in Resources */,
 				30BBAA592CB522FA00A84090 /* AppColors.xcassets in Resources */,
-				3033991C2CE71D8400977E8A /* Localizable.xcstrings in Resources */,
 				30E4AE512CEB1E4900B6C503 /* GoogleService-Info.plist in Resources */,
 				30BBAA552CB517E400A84090 /* MainViewController.storyboard in Resources */,
-				303398D02CDDE76800977E8A /* QRTypeCollectionViewCell.xib in Resources */,
-				30BBAA6F2CB9085B00A84090 /* QRDetailViewController.xib in Resources */,
-				303399162CE4A91300977E8A /* QRDetailView.xib in Resources */,
 				30BBA9FE2CB501E400A84090 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,7 +620,6 @@
 			files = (
 				30BBAA3F2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift in Sources */,
 				30BBAA322CB5057D00A84090 /* Observable.swift in Sources */,
-				30BBAA702CB9085B00A84090 /* QRDetailViewController.swift in Sources */,
 				30BBAA5E2CB8FFCE00A84090 /* AppSettingTabViewController.swift in Sources */,
 				3052B1D12D1D2A9900145BC3 /* ImageUseCase.swift in Sources */,
 				30BBAA232CB5028000A84090 /* AppFlowCoordinator.swift in Sources */,
@@ -762,41 +631,24 @@
 				30BBAA372CB5075C00A84090 /* DispatchQueueType.swift in Sources */,
 				30BBAA842CB9137800A84090 /* Cancellable.swift in Sources */,
 				30E4AE732CEC32AE00B6C503 /* UIColor+Extensions.swift in Sources */,
-				303399092CE4728400977E8A /* QRItemUseCase.swift in Sources */,
 				303398ED2CE1A93A00977E8A /* CameraPermissionDataSource.swift in Sources */,
-				30BBAA342CB506C300A84090 /* QRTypeItemViewModel.swift in Sources */,
 				303398F32CE1F60700977E8A /* PhotoLibraryPermissionDataSource.swift in Sources */,
 				30BBAA2B2CB5038E00A84090 /* MainViewController.swift in Sources */,
 				30BBAA8A2CB9141800A84090 /* RepositoryTask.swift in Sources */,
-				303398EA2CE1A90100977E8A /* QRScannerRepository.swift in Sources */,
 				303399032CE4714100977E8A /* TimestampProvider.swift in Sources */,
 				303398F72CE1F6F800977E8A /* PermissionRepository.swift in Sources */,
-				30BBAA8D2CB9166300A84090 /* GetQRListUseCase.swift in Sources */,
-				30E4AE6F2CEB3F2B00B6C503 /* ColorPickerManager.swift in Sources */,
-				303398CF2CDDE76800977E8A /* QRTypeCollectionViewCell.swift in Sources */,
 				30BBAA262CB5030C00A84090 /* MainCoordinator.swift in Sources */,
 				303399182CE5F61400977E8A /* AppVersionRepository.swift in Sources */,
 				30BBAA392CB5081800A84090 /* XibInstantiable.swift in Sources */,
 				30BBAA7C2CB9121B00A84090 /* UserDefaultsManager.swift in Sources */,
 				30BBAA4F2CB5143F00A84090 /* CompressTabViewController.swift in Sources */,
-				303399142CE4A89700977E8A /* QRDetailView.swift in Sources */,
-				30BBAA492CB5140F00A84090 /* ResizeTabViewController.swift in Sources */,
-				30BBAA822CB9131700A84090 /* DefaultRQListRepository.swift in Sources */,
-				303399012CE44CD900977E8A /* QRItem.swift in Sources */,
 				30E4AE662CEB2D6A00B6C503 /* AdmobManager.swift in Sources */,
 				30BBAA772CB90A5C00A84090 /* AccessibilityIdentifier.swift in Sources */,
-				3033990B2CE472D400977E8A /* QRItemRepository.swift in Sources */,
 				30E4AE4F2CEAD53E00B6C503 /* Config.swift in Sources */,
-				30BBAA802CB9130500A84090 /* QRListRepository.swift in Sources */,
 				3033991A2CE5F63200977E8A /* FetchAppVersionUseCase.swift in Sources */,
 				30BBA9F22CB501E300A84090 /* AppDelegate.swift in Sources */,
-				303398E82CE1A8EA00977E8A /* QRScannerUseCase.swift in Sources */,
-				303398DF2CE19EE200977E8A /* ScanQRTabViewController.swift in Sources */,
 				30BBAA532CB517AA00A84090 /* StoryboardInstantiable.swift in Sources */,
 				303398F52CE1F63A00977E8A /* PermissionUseCase.swift in Sources */,
-				303399102CE482D000977E8A /* MyQRTableViewCell.swift in Sources */,
-				30BBAA692CB9025E00A84090 /* QRTypeItem.swift in Sources */,
-				30BBAA722CB9091600A84090 /* QRDetailViewModel.swift in Sources */,
 				3052B1D52D1D2F0A00145BC3 /* UIImage+Extensions.swift in Sources */,
 				30BBA9F42CB501E300A84090 /* SceneDelegate.swift in Sources */,
 				3052B1D32D1D2ABF00145BC3 /* ImageWithMetadata.swift in Sources */,
@@ -815,8 +667,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30BBAA152CB501E400A84090 /* WithRunningUITestsLaunchTests.swift in Sources */,
-				30BBAA132CB501E400A84090 /* WithRunningUITests.swift in Sources */,
+				30BBAA152CB501E400A84090 /* ImageCompressUITestsLaunchTests.swift in Sources */,
+				30BBAA132CB501E400A84090 /* ImageCompressUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,7 +846,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageCompress/Resources/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Permission is required to access QR images from the gallery.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Camera permission is required to scan QR images.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Permission is required to save QR images.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This app requests user tracking to provide personalized ads. If you decline tracking, more general ads may be shown.";
@@ -1028,7 +879,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageCompress/Resources/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Permission is required to access QR images from the gallery.";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Camera permission is required to scan QR images.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Permission is required to save QR images.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This app requests user tracking to provide personalized ads. If you decline tracking, more general ads may be shown.";
