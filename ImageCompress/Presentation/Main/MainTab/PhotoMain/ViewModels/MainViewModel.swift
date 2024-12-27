@@ -22,7 +22,7 @@ struct MainViewModelActions {
 protocol MainViewModelInput {
     func viewDidLoad()
     func didSelectItem(at index: Int)
-    func downloadImage(image: ImageWithMetadata, completion: @escaping (Bool) -> Void)
+//    func downloadImage(image: ImageWithMetadata, completion: @escaping (Bool) -> Void)
     func openAppSettings()
     func checkCameraPermission()
     func checkPhotoLibraryOnlyAddPermission()
@@ -33,7 +33,11 @@ protocol MainViewModelInput {
     func fetchMyQRList()
     func loadLatestVersion(completion: @escaping (String?) -> Void)
     func openImagePicker(_ sender: UIViewController)
+    func shareImage(_ sender: UIViewController)
     func formatImageDate(_ date: Date) -> String?
+    func imageSave(completion: @escaping (Bool) -> Void)
+    func changeImageQuality(level: Int)
+    func changeImageSize(level: Int)
 }
 
 // Output 프로토콜: 뷰모델에서 뷰로 전달될 데이터들
@@ -178,30 +182,18 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     // MARK: - Image Download (이미지 다운로드)
     
     // 이미지 다운로드 실행
-    func downloadImage(image: ImageWithMetadata, completion: @escaping (Bool) -> Void) {
+    private func downloadImage(image: ImageWithMetadata, completion: @escaping (Bool) -> Void) {
         imageUseCase.saveImage(image) { result in
             switch result {
             case .success(let success):
                 completion(success) // 성공 시 완료 핸들러 호출
             case .failure(let failure):
+                print(failure.localizedDescription)
                 completion(false)
             }
         }
     }
    
-    // ImagePicker 열기
-    func openImagePicker(_ sender: UIViewController) {
-        // Create UIImagePickerController instance
-        DispatchQueue.main.async {
-            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-            config.selectionLimit = 1
-            config.filter = .any(of: [.livePhotos, .images])
-
-            let picker = PHPickerViewController(configuration: config)
-            picker.delegate = self
-            sender.present(picker, animated: true, completion: nil)
-        }
-    }
     
     // MARK: App Setting
     
@@ -211,14 +203,6 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
         }
     }
     
-    func formatImageDate(_ date: Date) -> String? {
-        let outputDateFormatter = DateFormatter()
-        outputDateFormatter.dateStyle = .medium
-        outputDateFormatter.timeStyle = .short
-        return outputDateFormatter.string(from: date)
-        
-        return nil
-    }
 }
 
 // MARK: - Input (뷰 이벤트 처리)
@@ -234,6 +218,94 @@ extension DefaultMainViewModel {
     func didSelectItem(at index: Int) {
         actions?.showDetail(myQRItems.value[index]) // 선택된 항목에 대한 세부 정보 표시
     }
+    
+    
+     // ImagePicker 열기
+     func openImagePicker(_ sender: UIViewController) {
+         // Create UIImagePickerController instance
+         DispatchQueue.main.async {
+             var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+             config.selectionLimit = 1
+             config.filter = .any(of: [.livePhotos, .images])
+
+             let picker = PHPickerViewController(configuration: config)
+             picker.delegate = self
+             sender.present(picker, animated: true, completion: nil)
+         }
+     }
+    
+    // Image 공유하기
+    func shareImage(_ sender: UIViewController) {
+        guard let shareImg = self.selectedImg.value else {
+            print("공유할 이미지가 없습니다.")
+            return
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [shareImg], applicationActivities: nil)
+        
+        // iPad에서의 팝오버 설정 (iPad에서는 이 설정이 없으면 앱이 충돌할 수 있음)
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceView = sender.view // 공유 버튼이 있는 뷰를 기준으로 팝오버 표시
+        }
+        
+        sender.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func formatImageDate(_ date: Date) -> String? {
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateStyle = .medium
+        outputDateFormatter.timeStyle = .short
+        return outputDateFormatter.string(from: date)
+    }
+    
+    func imageSave(completion: @escaping (Bool) -> Void) {
+        if let img = selectedImg.value {
+            self.downloadImage(image: img) { isSuccess in
+                completion(isSuccess)
+            }
+        }
+    }
+    
+    func changeImageQuality(level: Int) {
+        guard let data = self.selectedImg.value else { return }
+        switch level {
+        case 0:
+            self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 1)
+        case 1:
+            self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0.8)
+        case 2:
+            self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0.5)
+        case 3:
+            self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0)
+        default:
+            return
+        }
+    }
+    
+    
+    func changeImageSize(level: Int) {
+        guard let data = self.selectedImg.value, let cgData = UIImage(data: data.originImgData)?.cgImage else { return }
+        print(cgData.width)
+        print(cgData.height)
+        switch level {
+        case 0:
+            self.selectedImg.value?.imgData = data.originImgData
+        case 1:
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4 * 3), CGFloat(cgData.height / 4 * 3)))
+            print("\(cgData.width / 4 * 3) \(cgData.height / 4 * 3)")
+        case 2:
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4 * 2), CGFloat(cgData.height / 4 * 2)))
+            print("\(cgData.width / 4 * 2) \(cgData.height / 4 * 2)")
+        case 3:
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4), CGFloat(cgData.height / 4)))
+            print("\(cgData.width / 4) \(cgData.height / 4)")
+        case 4:
+            //TODO: 커스텀 가로 세로를 보여줘야함.
+            return
+        default:
+            return
+        }
+    }
 }
 
 extension DefaultMainViewModel: PHPickerViewControllerDelegate {
@@ -248,7 +320,7 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
                 }
                 
                 let asset = result.assetIdentifier
-                var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", imgData: data, metaData: [:], asset: nil)
+                var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", originImgData: data, imgData: data, metaData: [:], asset: nil)
                 // PHPickerResult에서 PHAsset 추출
                 if let assetIdentifier = result.assetIdentifier,
                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetIdentifier], options: nil).firstObject {
@@ -256,6 +328,18 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
                     // 촬영 시간 (Creation Date)
                     print("Creation Date: \(asset.creationDate ?? Date())")
                     
+                    if let resource = PHAssetResource.assetResources(for: asset).first {
+                        let ext = resource.uniformTypeIdentifier
+                        // 확장자만 추출하기
+                        if let lastPathComponent = ext.components(separatedBy: ".").last {
+                            print("확장자: \(lastPathComponent)")
+                            returnData.imgName += ".\(lastPathComponent)"
+                        }else {
+                            if ext != "" {
+                                returnData.imgName += ".\(ext)"
+                            }
+                        }
+                    }
                     // 위치 (Location)
 //                    if let location = asset.location {
 //                        print("Location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
@@ -272,4 +356,6 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
             }
         }
     }
+    
+
 }

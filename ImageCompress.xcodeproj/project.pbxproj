@@ -51,7 +51,7 @@
 		30BBAA3C2CB5096F00A84090 /* UIViewController+AddBehaviors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA3B2CB5096F00A84090 /* UIViewController+AddBehaviors.swift */; };
 		30BBAA3F2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA3E2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift */; };
 		30BBAA412CB509D100A84090 /* BlackStyleNavigationBarBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA402CB509D100A84090 /* BlackStyleNavigationBarBehavior.swift */; };
-		30BBAA492CB5140F00A84090 /* MypageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA462CB5140F00A84090 /* MypageTabViewController.swift */; };
+		30BBAA492CB5140F00A84090 /* ResizeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA462CB5140F00A84090 /* ResizeTabViewController.swift */; };
 		30BBAA4F2CB5143F00A84090 /* CompressTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA4C2CB5143F00A84090 /* CompressTabViewController.swift */; };
 		30BBAA532CB517AA00A84090 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBAA522CB517AA00A84090 /* StoryboardInstantiable.swift */; };
 		30BBAA552CB517E400A84090 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BBAA542CB517E400A84090 /* MainViewController.storyboard */; };
@@ -147,7 +147,7 @@
 		30BBAA3B2CB5096F00A84090 /* UIViewController+AddBehaviors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddBehaviors.swift"; sourceTree = "<group>"; };
 		30BBAA3E2CB509A100A84090 /* BackButtonEmptyTitleNavigationBarBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonEmptyTitleNavigationBarBehavior.swift; sourceTree = "<group>"; };
 		30BBAA402CB509D100A84090 /* BlackStyleNavigationBarBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackStyleNavigationBarBehavior.swift; sourceTree = "<group>"; };
-		30BBAA462CB5140F00A84090 /* MypageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTabViewController.swift; sourceTree = "<group>"; };
+		30BBAA462CB5140F00A84090 /* ResizeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeTabViewController.swift; sourceTree = "<group>"; };
 		30BBAA4C2CB5143F00A84090 /* CompressTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressTabViewController.swift; sourceTree = "<group>"; };
 		30BBAA522CB517AA00A84090 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		30BBAA542CB517E400A84090 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
@@ -434,8 +434,8 @@
 				30BBAA2A2CB5038E00A84090 /* MainViewController.swift */,
 				30BBAA542CB517E400A84090 /* MainViewController.storyboard */,
 				30BBAA4C2CB5143F00A84090 /* CompressTabViewController.swift */,
+				30BBAA462CB5140F00A84090 /* ResizeTabViewController.swift */,
 				303398DE2CE19EE200977E8A /* ScanQRTabViewController.swift */,
-				30BBAA462CB5140F00A84090 /* MypageTabViewController.swift */,
 				30BBAA5D2CB8FFCE00A84090 /* AppSettingTabViewController.swift */,
 			);
 			path = Views;
@@ -780,7 +780,7 @@
 				30BBAA7C2CB9121B00A84090 /* UserDefaultsManager.swift in Sources */,
 				30BBAA4F2CB5143F00A84090 /* CompressTabViewController.swift in Sources */,
 				303399142CE4A89700977E8A /* QRDetailView.swift in Sources */,
-				30BBAA492CB5140F00A84090 /* MypageTabViewController.swift in Sources */,
+				30BBAA492CB5140F00A84090 /* ResizeTabViewController.swift in Sources */,
 				30BBAA822CB9131700A84090 /* DefaultRQListRepository.swift in Sources */,
 				303399012CE44CD900977E8A /* QRItem.swift in Sources */,
 				30E4AE662CEB2D6A00B6C503 /* AdmobManager.swift in Sources */,

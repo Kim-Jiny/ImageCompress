@@ -10,6 +10,7 @@ import Photos
 
 struct ImageWithMetadata {
     var imgName: String
+    var originImgData: Data
     var imgData: Data
     var metaData: [String: Any]
     var asset: PHAsset?

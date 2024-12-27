@@ -1,17 +1,18 @@
 //
-//  CompressTabViewController.swift
+//  ResizeTabViewController.swift
 //  ImageCompress
 //
 //  Created by 김미진 on 10/8/24.
 //
-
 import UIKit
 
-class CompressTabViewController: UIViewController, StoryboardInstantiable {
+
+class ResizeTabViewController: UIViewController, StoryboardInstantiable {
     var viewModel: MainViewModel?
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var adView: UIView!
+    
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var emptyTitle: UILabel!
     @IBOutlet weak var emptyBody: UILabel!
@@ -19,10 +20,8 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var infoView: UIStackView!
     
     @IBOutlet weak var settingView: UIView!
-    @IBOutlet weak var qualityTitle: UILabel!
-    @IBOutlet weak var qualityBody: UILabel!
-    @IBOutlet weak var sizeTitle: UILabel!
-    @IBOutlet weak var sizeBody: UILabel!
+    @IBOutlet weak var settingTitle: UILabel!
+    @IBOutlet weak var settingBody: UILabel!
     
     @IBOutlet weak var selectedImgView: UIImageView!
     @IBOutlet weak var imgNameLB: UILabel!
@@ -33,7 +32,6 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var qualityLevel: UISegmentedControl!
-    @IBOutlet weak var sizeLevel: UISegmentedControl!
     
     private var isFirstSelectionDone = false
     private var colorPickerManager = ColorPickerManager()
@@ -59,18 +57,13 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
         self.shareBtn.layer.cornerRadius = 35
         self.saveBtn.layer.cornerRadius = 35
         self.navigationController?.navigationBar.isHidden = true
+        
         self.emptyTitle.text = NSLocalizedString("Click the button to add a photo.", comment: "")
         self.emptyBody.text = NSLocalizedString("After adding a photo, the save button will be enabled.", comment: "")
-        self.qualityTitle.text = NSLocalizedString("Image Weight", comment: "")
-        self.qualityBody.text = NSLocalizedString("After adding a photo, the save button will be enabled.\nAs the image weight decreases, the image quality may decrease.", comment: "")
-        self.sizeTitle.text = NSLocalizedString("Image Size", comment: "")
-        self.sizeBody.text = NSLocalizedString("Smaller image sizes result in reduced file size.\nCheck the resized image through the image preview at the top.", comment: "")
-   
+        self.settingTitle.text = NSLocalizedString("Image Size", comment: "")
+        self.settingBody.text = NSLocalizedString("Smaller image sizes result in reduced file size.\nCheck the resized image through the image preview at the top.", comment: "")
     }
     
-    private func setupSegment() {
-        
-    }
     
     private func setupAdView() {
         AdmobManager.shared.setMainBanner(adView, self, .main)
@@ -200,21 +193,13 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
             return
         }
         
-        self.viewModel?.changeImageQuality(level: sg.selectedSegmentIndex)
-    }
-    @IBAction func sizeSg(_ sender: Any) {
-        guard let sg = sender as? UISegmentedControl else {
-            return
-        }
-        
         self.viewModel?.changeImageSize(level: sg.selectedSegmentIndex)
     }
-    
 }
 
 
 // MARK: - Image
-extension CompressTabViewController {
+extension ResizeTabViewController {
     
     //MARK: - Image Share
     func shareImage() {

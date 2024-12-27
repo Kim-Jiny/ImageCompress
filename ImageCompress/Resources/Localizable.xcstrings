@@ -83,6 +83,12 @@
         }
       }
     },
+    "After adding a photo, the save button will be enabled." : {
+
+    },
+    "After adding a photo, the save button will be enabled.\nAs the image weight decreases, the image quality may decrease." : {
+
+    },
     "An unknown error occurred." : {
       "comment" : "알 수 없는 오류가 발생했습니다.",
       "localizations" : {
@@ -428,6 +434,9 @@
           }
         }
       }
+    },
+    "Click the button to add a photo." : {
+
     },
     "Color" : {
       "comment" : "Share",
@@ -841,6 +850,12 @@
         }
       }
     },
+    "Image Size" : {
+
+    },
+    "Image Weight" : {
+
+    },
     "Latest version on store: %@" : {
       "localizations" : {
         "de" : {
@@ -1168,6 +1183,7 @@
     },
     "Open in Safari" : {
       "comment" : "Open in Safari",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1955,6 +1971,9 @@
         }
       }
     },
+    "Smaller image sizes result in reduced file size.\nCheck the resized image through the image preview at the top." : {
+
+    },
     "Square" : {
       "comment" : "Square",
       "extractionState" : "stale",
@@ -2166,6 +2185,7 @@
     },
     "The QR image has been saved to the gallery." : {
       "comment" : "The QR image has been saved to the gallery.",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2206,6 +2226,7 @@
       }
     },
     "There are no saved QR's.\nPlease generate or scan a QR." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2408,6 +2429,7 @@
     },
     "View QR Content" : {
       "comment" : "View QR Content",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
