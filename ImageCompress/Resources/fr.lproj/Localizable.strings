@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  ImageCompress
+
+  Created by 김미진 on 1/8/25.
+  
+*/
+"compress" = "Compresser";
+"setting" = "Paramètres";
+"download_complete" = "Téléchargement terminé";
+"download_complete_body" = "L'image a été enregistrée dans la galerie.";
+"ok" = "OK";
+"photo_permission_title" = "Permission d'accès aux photos requise";
+"photo_permission_body" = "L'accès aux photos est nécessaire pour enregistrer la photo. Veuillez modifier l'autorisation dans les paramètres.";
+"cancel" = "Annuler";
+"go_setting" = "Aller aux paramètres";
+
+"original" = "Original";
+"normal" = "Normal";
+"low" = "Bas";
+"minimum" = "Minimum";
+
+"compress_notice" = "Les estimations de capacité compressée peuvent ne pas être exactes.";
+"image_weight" = "Poids de l'image";
+"image_weight_body" = "Réduire le poids de l'image peut diminuer la qualité.\nVérifiez l'aperçu en haut.";
+"image_size" = "Taille de l'image";
+"image_size_body" = "Des tailles d'image plus petites réduisent la taille du fichier.\nVérifiez l'image redimensionnée via l'aperçu en haut.";
+
+"add_photo_title" = "Cliquez sur le bouton pour ajouter une photo.";
+"add_photo_body" = "Après avoir ajouté une photo, le bouton Enregistrer sera activé.";
+
+"email_title" = "[Image Compress] Demande d'application";
+"email_body" = "Veuillez écrire votre demande concernant l'application.";
+"email_error1" = "Impossible d'envoyer l'email.";
+"email_sent_title" = "Email envoyé";
+"email_sent_body" = "L'email a été envoyé avec succès.";
+"email_saved_title" = "Email sauvegardé";
+"email_saved_body" = "L'email a été sauvegardé en tant que brouillon.";
+"email_canceled_title" = "Email annulé";
+"email_canceled_body" = "L'envoi de l'email a été annulé.";
+"email_failed_title" = "Email échoué";
+"email_failed_body" = "Échec de l'envoi de l'email.";
+"email_error_title" = "Erreur";
+"email_error_body" = "Une erreur inconnue s'est produite.";
+
+"contact_us" = "Contactez-nous";
+"latest_version" = "C'est la dernière version.";
+"not_latest_version" = "Dernière version en magasin : %@";
+"current_version" = "Version actuelle : %@";
+"update_new_version" = "Mettre à jour vers la dernière version";
+
+"error" = "Erreur";

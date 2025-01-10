@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  ImageCompress
+
+  Created by 김미진 on 1/8/25.
+  
+*/
+"compress" = "Komprimieren";
+"setting" = "Einstellungen";
+"download_complete" = "Download abgeschlossen";
+"download_complete_body" = "Das Bild wurde in der Galerie gespeichert.";
+"ok" = "OK";
+"photo_permission_title" = "Fotozugriff erforderlich";
+"photo_permission_body" = "Der Zugriff auf Fotos ist erforderlich, um das Foto zu speichern. Bitte ändern Sie die Berechtigung in den Einstellungen.";
+"cancel" = "Abbrechen";
+"go_setting" = "Zu den Einstellungen";
+
+"original" = "Original";
+"normal" = "Normal";
+"low" = "Niedrig";
+"minimum" = "Minimum";
+
+"compress_notice" = "Die geschätzte Komprimierungsgröße kann ungenau sein.";
+"image_weight" = "Bildgewicht";
+"image_weight_body" = "Das Verringern des Bildgewichts kann die Qualität beeinträchtigen.\nÜberprüfen Sie die Vorschau oben.";
+"image_size" = "Bildgröße";
+"image_size_body" = "Kleinere Bildgrößen reduzieren die Dateigröße.\nÜberprüfen Sie das verkleinerte Bild in der Vorschau oben.";
+
+"add_photo_title" = "Klicken Sie auf die Schaltfläche, um ein Foto hinzuzufügen.";
+"add_photo_body" = "Nach dem Hinzufügen eines Fotos wird die Schaltfläche Speichern aktiviert.";
+
+"email_title" = "[Image Compress] App-Anfrage";
+"email_body" = "Bitte schreiben Sie Ihre Anfrage zur App.";
+"email_error1" = "E-Mail konnte nicht gesendet werden.";
+"email_sent_title" = "E-Mail gesendet";
+"email_sent_body" = "Die E-Mail wurde erfolgreich gesendet.";
+"email_saved_title" = "E-Mail gespeichert";
+"email_saved_body" = "Die E-Mail wurde als Entwurf gespeichert.";
+"email_canceled_title" = "E-Mail abgebrochen";
+"email_canceled_body" = "Das Senden der E-Mail wurde abgebrochen.";
+"email_failed_title" = "E-Mail fehlgeschlagen";
+"email_failed_body" = "Das Senden der E-Mail ist fehlgeschlagen.";
+"email_error_title" = "Fehler";
+"email_error_body" = "Ein unbekannter Fehler ist aufgetreten.";
+
+"contact_us" = "Kontaktieren Sie uns";
+"latest_version" = "Dies ist die neueste Version.";
+"not_latest_version" = "Neueste Version im Store: %@";
+"current_version" = "Aktuelle Version: %@";
+"update_new_version" = "Auf die neueste Version aktualisieren";
+
+"error" = "Fehler";

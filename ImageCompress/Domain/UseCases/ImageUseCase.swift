@@ -28,7 +28,7 @@ class ImageUseCaseImpl: ImageUseCase {
     
     func resizeImage(_ imageWithMetadata: ImageWithMetadata, targetSize: CGSize) -> ImageWithMetadata? {
         guard let originalImage = UIImage(data: imageWithMetadata.originImgData) else { return nil }
-        if targetSize == imageWithMetadata.imgSize && imageWithMetadata.imgQuality == 1 {
+        if targetSize == UIImage(data:imageWithMetadata.originImgData)?.size && imageWithMetadata.imgQuality == 1 {
             var data = imageWithMetadata
             data.imgData = data.originImgData
             return data
@@ -37,23 +37,23 @@ class ImageUseCaseImpl: ImageUseCase {
 //        let originalSize = originalImage.size
 //        
 //        // 가로 및 세로 비율 계산
-//        let widthRatio = targetSize.width / originalSize.width
-//        let heightRatio = targetSize.height / originalSize.height
-//        
+        let widthRatio = targetSize.width / originalImage.size.width
+        let heightRatio = targetSize.height / originalImage.size.height
+//
 //        // 최소 비율로 이미지 비율 유지
-//        let scaleFactor = min(widthRatio, heightRatio)
-//        
+        let scaleFactor = min(widthRatio, heightRatio)
+//
 //        // 새로운 크기 계산
 //        let newSize = CGSize(width: originalSize.width * scaleFactor,
 //                             height: originalSize.height * scaleFactor)
 //        
         // 이미지 크기 조정
-        UIGraphicsBeginImageContextWithOptions(targetSize, false, 1.0)
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, 1)
         originalImage.draw(in: CGRect(origin: .zero, size: targetSize))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         print("img quality \(imageWithMetadata.imgQuality)")
-        guard let resizedImageData = resizedImage?.jpegData(compressionQuality: imageWithMetadata.imgQuality) else { return nil }
+        guard let resizedImageData = resizedImage?.jpegData(compressionQuality: imageWithMetadata.imgQuality == 1 ? 0.8 : imageWithMetadata.imgQuality) else { return nil }
 //
         return ImageWithMetadata(imgName: imageWithMetadata.imgName, originImgData: imageWithMetadata.originImgData, imgData: resizedImageData, metaData: imageWithMetadata.metaData, asset: imageWithMetadata.asset, imgSize: targetSize, imgQuality: imageWithMetadata.imgQuality)
     }

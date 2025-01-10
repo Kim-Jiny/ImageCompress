@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  ImageCompress
+
+  Created by 김미진 on 1/8/25.
+  
+*/
+"compress" = "Nén";
+"setting" = "Cài đặt";
+"download_complete" = "Tải xuống hoàn tất";
+"download_complete_body" = "Hình ảnh đã được lưu vào thư viện.";
+"ok" = "OK";
+"photo_permission_title" = "Yêu cầu quyền truy cập ảnh";
+"photo_permission_body" = "Cần quyền truy cập ảnh để lưu hình ảnh. Vui lòng thay đổi quyền trong cài đặt.";
+"cancel" = "Hủy";
+"go_setting" = "Đi đến cài đặt";
+
+"original" = "Gốc";
+"normal" = "Bình thường";
+"low" = "Thấp";
+"minimum" = "Tối thiểu";
+
+"compress_notice" = "Kích thước nén ước tính có thể không chính xác.";
+"image_weight" = "Trọng lượng hình ảnh";
+"image_weight_body" = "Giảm trọng lượng hình ảnh có thể làm giảm chất lượng.\nKiểm tra bản xem trước ở phía trên.";
+"image_size" = "Kích thước hình ảnh";
+"image_size_body" = "Kích thước hình ảnh nhỏ sẽ giảm kích thước tệp.\nKiểm tra hình ảnh đã thay đổi kích thước trong bản xem trước.";
+
+"add_photo_title" = "Nhấn nút để thêm ảnh.";
+"add_photo_body" = "Sau khi thêm ảnh, nút Lưu sẽ được kích hoạt.";
+
+"email_title" = "[Image Compress] Yêu cầu thông tin ứng dụng";
+"email_body" = "Vui lòng mô tả yêu cầu của bạn về ứng dụng.";
+"email_error1" = "Không thể gửi email.";
+"email_sent_title" = "Email đã gửi";
+"email_sent_body" = "Email đã được gửi thành công.";
+"email_saved_title" = "Email đã lưu";
+"email_saved_body" = "Email đã được lưu vào bản nháp.";
+"email_canceled_title" = "Đã hủy email";
+"email_canceled_body" = "Gửi email đã bị hủy.";
+"email_failed_title" = "Gửi email thất bại";
+"email_failed_body" = "Gửi email không thành công.";
+"email_error_title" = "Lỗi";
+"email_error_body" = "Đã xảy ra lỗi không xác định.";
+
+"contact_us" = "Liên hệ chúng tôi";
+"latest_version" = "Bạn đang sử dụng phiên bản mới nhất.";
+"not_latest_version" = "Phiên bản mới nhất có sẵn trên cửa hàng: %@";
+"current_version" = "Phiên bản hiện tại: %@";
+"update_new_version" = "Cập nhật lên phiên bản mới nhất";
+
+"error" = "Lỗi";

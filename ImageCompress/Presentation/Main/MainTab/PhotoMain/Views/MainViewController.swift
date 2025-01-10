@@ -40,7 +40,7 @@ class MainViewController: UITabBarController, StoryboardInstantiable {
     private func setupViews() {
         // 각 ViewController를 xib에서 불러오기
         let firstVC = CompressTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
-        firstVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Compress", comment: "용량 압축"), image: UIImage(systemName: "rectangle.compress.vertical"), tag: 0)
+        firstVC.tabBarItem = UITabBarItem(title: NSLocalizedString("compress", comment: "용량 압축"), image: UIImage(systemName: "rectangle.compress.vertical"), tag: 0)
         firstVC.viewModel = viewModel
         
 //        let secondVC = ScanQRTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
@@ -52,7 +52,7 @@ class MainViewController: UITabBarController, StoryboardInstantiable {
 //        thirdVC.viewModel = viewModel
         
         let fourthVC = AppSettingTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
-        fourthVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Settings", comment: "설정"), image: UIImage(systemName: "gearshape"), tag: 3)
+        fourthVC.tabBarItem = UITabBarItem(title: NSLocalizedString("setting", comment: "설정"), image: UIImage(systemName: "gearshape"), tag: 3)
         fourthVC.viewModel = viewModel
         
         // 뷰 컨트롤러들을 탭 바에 추가

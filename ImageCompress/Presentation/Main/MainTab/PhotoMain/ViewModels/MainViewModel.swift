@@ -163,12 +163,12 @@ extension DefaultMainViewModel {
     
     // Image 공유하기
     func shareImage(_ sender: UIViewController) {
-        guard let shareImg = self.selectedImg.value else {
+        guard let shareImg = self.selectedImg.value, let image = UIImage(data: shareImg.imgData) else {
             print("공유할 이미지가 없습니다.")
             return
         }
         
-        let activityViewController = UIActivityViewController(activityItems: [shareImg], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         
         // iPad에서의 팝오버 설정 (iPad에서는 이 설정이 없으면 앱이 충돌할 수 있음)
         if let popoverController = activityViewController.popoverPresentationController {
@@ -199,9 +199,9 @@ extension DefaultMainViewModel {
         case 0:
             self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 1)
         case 1:
-            self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0.8)
-        case 2:
             self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0.5)
+        case 2:
+            self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0.3)
         case 3:
             self.selectedImg.value = imageUseCase.adjustImageQuality(data, quality: 0)
         default:
@@ -211,16 +211,16 @@ extension DefaultMainViewModel {
     
     
     func changeImageSize(level: Int) {
-        guard let data = self.selectedImg.value, let cgData = UIImage(data: data.originImgData)?.cgImage else { return }
+        guard let data = self.selectedImg.value, let img = UIImage(data: data.originImgData) else { return }
         switch level {
         case 0:
-            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width), CGFloat(cgData.height)))
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(img.size.width), CGFloat(img.size.height)))
         case 1:
-            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4 * 3), CGFloat(cgData.height / 4 * 3)))
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(img.size.width / 4 * 3), CGFloat(img.size.height / 4 * 3)))
         case 2:
-            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4 * 2), CGFloat(cgData.height / 4 * 2)))
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(img.size.width / 4 * 2), CGFloat(img.size.height / 4 * 2)))
         case 3:
-            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(cgData.width / 4), CGFloat(cgData.height / 4)))
+            self.selectedImg.value = imageUseCase.resizeImage(data, targetSize: CGSizeMake(CGFloat(img.size.width / 4), CGFloat(img.size.height / 4)))
         case 4:
             //TODO: 커스텀 가로 세로를 보여줘야함.
             return
@@ -242,7 +242,7 @@ extension DefaultMainViewModel: PHPickerViewControllerDelegate {
                     return
                 }
                 
-                var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", originImgData: data, imgData: data, metaData: [:], asset: nil, imgSize: UIImage(data: data)?.pixelSize() ?? .zero, imgQuality: 1)
+                var returnData = ImageWithMetadata(imgName: result.itemProvider.suggestedName ?? "unknown", originImgData: data, imgData: data, metaData: [:], asset: nil, imgSize: UIImage(data: data)?.size ?? .zero, imgQuality: 1)
                 // PHPickerResult에서 PHAsset 추출
                 if let assetIdentifier = result.assetIdentifier,
                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetIdentifier], options: nil).firstObject {

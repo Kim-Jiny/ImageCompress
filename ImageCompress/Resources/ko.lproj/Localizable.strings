@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  ImageCompress
+
+  Created by 김미진 on 1/8/25.
+  
+*/
+"compress" = "압축";
+"setting" = "설정";
+"download_complete" = "다운로드 완료";
+"download_complete_body" = "이미지가 갤러리에 저장되었습니다.";
+"ok" = "확인";
+"photo_permission_title" = "사진 접근 권한 필요";
+"photo_permission_body" = "사진을 저장하려면 권한이 필요합니다. 설정에서 권한을 변경해주세요.";
+"cancel" = "취소";
+"go_setting" = "설정으로 이동";
+
+"original" = "원본";
+"normal" = "보통";
+"low" = "낮음";
+"minimum" = "최소";
+
+"compress_notice" = "압축 용량 추정치가 정확하지 않을 수 있습니다.";
+"image_weight" = "이미지 무게";
+"image_weight_body" = "이미지 무게가 감소하면 품질이 저하될 수 있습니다.\n상단의 이미지 미리보기를 통해 확인해주세요.";
+"image_size" = "이미지 크기";
+"image_size_body" = "이미지 크기가 작을수록 파일 크기가 감소합니다.\n상단의 이미지 미리보기를 통해 확인해주세요.";
+
+"add_photo_title" = "버튼을 클릭하여 사진을 추가하세요.";
+"add_photo_body" = "사진을 추가하면 저장 버튼이 활성화됩니다.";
+
+"email_title" = "[Image Compress] 앱 문의";
+"email_body" = "앱에 대한 문의 사항을 작성해주세요.";
+"email_error1" = "이메일을 보낼 수 없습니다.";
+"email_sent_title" = "이메일 전송 완료";
+"email_sent_body" = "이메일이 성공적으로 전송되었습니다.";
+"email_saved_title" = "이메일 저장";
+"email_saved_body" = "이메일이 임시 저장되었습니다.";
+"email_canceled_title" = "이메일 취소";
+"email_canceled_body" = "이메일 전송이 취소되었습니다.";
+"email_failed_title" = "이메일 전송 실패";
+"email_failed_body" = "이메일 전송에 실패했습니다.";
+"email_error_title" = "오류";
+"email_error_body" = "알 수 없는 오류가 발생했습니다.";
+
+"contact_us" = "문의하기";
+"latest_version" = "최신 버전입니다.";
+"not_latest_version" = "스토어의 최신 버전: %@";
+"current_version" = "현재 버전: %@";
+"update_new_version" = "최신 버전으로 업데이트";
+
+"error" = "오류";

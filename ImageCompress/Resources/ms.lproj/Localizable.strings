@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  ImageCompress
+
+  Created by 김미진 on 1/8/25.
+  
+*/
+"compress" = "Mampatkan";
+"setting" = "Tetapan";
+"download_complete" = "Muat turun selesai";
+"download_complete_body" = "Imej telah disimpan dalam galeri.";
+"ok" = "OK";
+"photo_permission_title" = "Akses foto diperlukan";
+"photo_permission_body" = "Akses kepada foto diperlukan untuk menyimpan imej. Sila ubah kebenaran dalam tetapan.";
+"cancel" = "Batal";
+"go_setting" = "Pergi ke tetapan";
+
+"original" = "Asal";
+"normal" = "Normal";
+"low" = "Rendah";
+"minimum" = "Minimum";
+
+"compress_notice" = "Anggaran saiz mampat mungkin tidak tepat.";
+"image_weight" = "Berat imej";
+"image_weight_body" = "Mengurangkan berat imej mungkin menjejaskan kualiti.\nSemak pratonton di bahagian atas.";
+"image_size" = "Saiz imej";
+"image_size_body" = "Saiz imej kecil akan mengurangkan saiz fail.\nSemak imej yang telah diubah saiz dalam pratonton.";
+
+"add_photo_title" = "Klik butang untuk menambah foto.";
+"add_photo_body" = "Selepas menambah foto, butang Simpan akan diaktifkan.";
+
+"email_title" = "[Image Compress] Permintaan maklumat aplikasi";
+"email_body" = "Sila huraikan permintaan anda berkaitan aplikasi.";
+"email_error1" = "Tidak dapat menghantar e-mel.";
+"email_sent_title" = "E-mel dihantar";
+"email_sent_body" = "E-mel telah berjaya dihantar.";
+"email_saved_title" = "E-mel disimpan";
+"email_saved_body" = "E-mel telah disimpan sebagai draf.";
+"email_canceled_title" = "E-mel dibatalkan";
+"email_canceled_body" = "Penghantaran e-mel telah dibatalkan.";
+"email_failed_title" = "Penghantaran e-mel gagal";
+"email_failed_body" = "Penghantaran e-mel tidak berjaya.";
+"email_error_title" = "Ralat";
+"email_error_body" = "Kesalahan yang tidak diketahui berlaku.";
+
+"contact_us" = "Hubungi kami";
+"latest_version" = "Anda menggunakan versi terkini.";
+"not_latest_version" = "Versi terkini tersedia di kedai: %@";
+"current_version" = "Versi semasa: %@";
+"update_new_version" = "Kemas kini ke versi terkini";
+
+"error" = "Ralat";

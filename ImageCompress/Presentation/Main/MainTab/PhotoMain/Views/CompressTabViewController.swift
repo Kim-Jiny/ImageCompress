@@ -56,13 +56,18 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
         self.shareBtn.layer.cornerRadius = 35
         self.saveBtn.layer.cornerRadius = 35
         self.navigationController?.navigationBar.isHidden = true
-        self.emptyTitle.text = NSLocalizedString("Click the button to add a photo.", comment: "")
-        self.emptyBody.text = NSLocalizedString("After adding a photo, the save button will be enabled.", comment: "")
-        self.qualityTitle.text = NSLocalizedString("Image Weight", comment: "")
-        self.qualityBody.text = NSLocalizedString("After adding a photo, the save button will be enabled.\nAs the image weight decreases, the image quality may decrease.", comment: "")
-        self.sizeTitle.text = NSLocalizedString("Image Size", comment: "")
-        self.sizeBody.text = NSLocalizedString("Smaller image sizes result in reduced file size.\nCheck the resized image through the image preview at the top.", comment: "")
-   
+        self.emptyTitle.text = NSLocalizedString("add_photo_title", comment: "")
+        self.emptyBody.text = NSLocalizedString("add_photo_body", comment: "")
+        self.qualityTitle.text = NSLocalizedString("image_weight", comment: "")
+        self.qualityBody.text = NSLocalizedString("image_weight_body", comment: "")
+        self.sizeTitle.text = NSLocalizedString("image_size", comment: "")
+        self.sizeBody.text = NSLocalizedString("image_size_body", comment: "")
+        self.qualityLevel.setTitle(NSLocalizedString("original", comment: ""), forSegmentAt: 0)
+        self.qualityLevel.setTitle(NSLocalizedString("normal", comment: ""), forSegmentAt: 1)
+        self.qualityLevel.setTitle(NSLocalizedString("low", comment: ""), forSegmentAt: 2)
+        self.qualityLevel.setTitle(NSLocalizedString("minimum", comment: ""), forSegmentAt: 3)
+        
+        self.sizeLevel.setTitle(NSLocalizedString("original", comment: ""), forSegmentAt: 0)
     }
     
     private func setupSegment() {
@@ -147,8 +152,8 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
             }else {
                 self?.imgTimeLB.isHidden = true
             }
-            if let image = UIImage(data: img.imgData)?.cgImage {
-                self?.imgSizeLB.text = "\(image.width) x \(image.height) | \(formatByteCount(img.imgData.count))"
+            if let image = UIImage(data: img.imgData) {
+                self?.imgSizeLB.text = "\(Int(image.size.width)) x \(Int(image.size.height)) | \(formatByteCount(img.originImgData.count))"
                 
                 // 사람이 읽기 좋은 파일 크기 형식으로 변환
                 func formatByteCount(_ byteCount: Int) -> String {
@@ -165,21 +170,21 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     }
     
     private func showSaveAlert() {
-        let alert = UIAlertController(title: NSLocalizedString("Download Complete", comment: "Download Complete"),
-                                      message: NSLocalizedString("The image has been saved to the gallery.", comment: "The image has been saved to the gallery."),
+        let alert = UIAlertController(title: NSLocalizedString("download_complete", comment: "Download Complete"),
+                                      message: NSLocalizedString("download_complete_body", comment: "The image has been saved to the gallery."),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:"OK"), style: .default) {_ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment:"OK"), style: .default) {_ in
             
         })
         present(alert, animated: true)
     }
     
     private func showPermissionAlert() {
-        let alert = UIAlertController(title: NSLocalizedString("Photo Access Permission Required", comment:"Photo Access Permission Required"),
-                                      message: NSLocalizedString("Photo access permission is required to save the photo. Please change the permission in Settings.", comment:"Photo access permission is required to save the photo. Please change the permission in Settings."),
+        let alert = UIAlertController(title: NSLocalizedString("photo_permission_title", comment:"Photo Access Permission Required"),
+                                      message: NSLocalizedString("photo_permission_body", comment:"Photo access permission is required to save the photo. Please change the permission in Settings."),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment:"Cancel"), style: .cancel))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Go to Settings", comment:"Go to Settings"), style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment:"Cancel"), style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("go_setting", comment:"Go to Settings"), style: .default, handler: { [weak self] _ in
             self?.viewModel?.openAppSettings()
         }))
         present(alert, animated: true)
@@ -218,45 +223,3 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     
 }
 
-
-// MARK: - Image
-extension CompressTabViewController {
-    
-    //MARK: - Image Share
-    func shareImage() {
-        
-        guard let imageData = self.viewModel?.selectedImg.value, let qrImage = UIImage(data: imageData.imgData) else {
-            print("공유할 이미지가 없습니다.")
-            return
-        }
-        
-        let activityViewController = UIActivityViewController(activityItems: [qrImage], applicationActivities: nil)
-        
-        // iPad에서의 팝오버 설정 (iPad에서는 이 설정이 없으면 앱이 충돌할 수 있음)
-        if let popoverController = activityViewController.popoverPresentationController {
-            popoverController.sourceView = self.view // 공유 버튼이 있는 뷰를 기준으로 팝오버 표시
-        }
-        
-        present(activityViewController, animated: true, completion: nil)
-    }
-    
-    //MARK: - Image Save
-    func saveImage() {
-        // TODO: - 권한을 체크하기전에 앱에 저장할지 디바이스 이미지로 저장할지를 선택하는 액션시트 구현
-        let alert = UIAlertController(title: nil, message: NSLocalizedString("Save Image to Gallery", comment:"갤러리에 이미지를 저장합니다."), preferredStyle: .alert)
-        
-        let option1 = UIAlertAction(title: NSLocalizedString("Save", comment:"저장"), style: .default) { action in
-            self.viewModel?.checkPhotoLibraryOnlyAddPermission()
-        }
-        
-        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment:"Cancel"), style: .cancel) { action in
-            
-        }
-        
-        alert.addAction(option1)
-        alert.addAction(cancel)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-}

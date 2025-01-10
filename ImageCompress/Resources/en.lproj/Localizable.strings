@@ -1,0 +1,54 @@
+/* 
+  Localizable.strings
+  ImageCompress
+
+  Created by 김미진 on 1/8/25.
+  
+*/
+
+"compress" = "Compress";
+"setting" = "Setting";
+"download_complete" = "Download Complete";
+"download_complete_body" = "The image has been saved to the gallery.";
+"ok" = "OK";
+"photo_permission_title" = "Photo Access Permission Required";
+"photo_permission_body" = "Photo access permission is required to save the photo. Please change the permission in Settings.";
+"cancel" = "Cancel";
+"go_setting" = "Go to Settings";
+
+"original" = "Original";
+"normal" = "Normal";
+"low" = "Low";
+"minimum" = "Minimum";
+"setting" = "Setting";
+
+"compress_notice" = "Compressed capacity estimates may not be accurate.";
+"image_weight" = "Image Weight";
+"image_weight_body" = "Reducing image weight may degrade quality.\nCheck the preview at the top.";
+"image_size" = "Image Size";
+"image_size_body" = "Smaller image sizes result in reduced file size.\nCheck the resized image through the image preview at the top.";
+
+"add_photo_title" = "Click the button to add a photo.";
+"add_photo_body" = "After adding a photo, the save button will be enabled.";
+
+"email_title" = "[Image Compress] App Inquiry";
+"email_body" = "Please write your inquiry regarding the app.";
+"email_error1" = "Unable to send email.";
+"email_sent_title" = "Mail Sent";
+"email_sent_body" = "The email was successfully sent.";
+"email_saved_title" = "Mail Saved";
+"email_saved_body" = "The email has been saved as a draft.";
+"email_canceled_title" = "Mail Canceled";
+"email_canceled_body" = "The email sending was canceled.";
+"email_failed_title" = "Mail Failed";
+"email_failed_body" = "Failed to send the email.";
+"email_error_title" = "Error";
+"email_error_body" = "An unknown error occurred.";
+
+"contact_us" = "Contact Us";
+"latest_version" = "This is the latest version.";
+"not_latest_version" = "Latest version on store: %@";
+"current_version" = "Current Version: %@";
+"update_new_version" = "Update to the Latest Version";
+
+"error" = "Error";
