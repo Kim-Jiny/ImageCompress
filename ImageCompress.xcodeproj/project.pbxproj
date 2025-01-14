@@ -99,7 +99,7 @@
 		3052B1F02D2E416B00145BC3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		30A2B1CA2CE8C13B00063D92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30A2B1CC2CE8C2F900063D92 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		30BBA9EE2CB501E300A84090 /* ImageCompress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCompress.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30BBA9EE2CB501E300A84090 /* LitePhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LitePhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BBA9F12CB501E300A84090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30BBA9F32CB501E300A84090 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		30BBA9FA2CB501E400A84090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		30BBA9EF2CB501E300A84090 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				30BBA9EE2CB501E300A84090 /* ImageCompress.app */,
+				30BBA9EE2CB501E300A84090 /* LitePhoto.app */,
 				30BBAA042CB501E400A84090 /* ImageCompressTests.xctest */,
 				30BBAA0E2CB501E400A84090 /* ImageCompressUITests.xctest */,
 			);
@@ -502,7 +502,7 @@
 				30E4AE592CEB1F2600B6C503 /* FirebaseDatabase */,
 			);
 			productName = WithRunning;
-			productReference = 30BBA9EE2CB501E300A84090 /* ImageCompress.app */;
+			productReference = 30BBA9EE2CB501E300A84090 /* LitePhoto.app */;
 			productType = "com.apple.product-type.application";
 		};
 		30BBAA032CB501E400A84090 /* ImageCompressTests */ = {
@@ -881,6 +881,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -888,7 +889,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiny.swift.ImageCompress;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LitePhoto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -916,6 +917,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -923,7 +925,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiny.swift.ImageCompress;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LitePhoto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
