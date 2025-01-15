@@ -40,6 +40,7 @@ protocol MainViewModelOutput {
     var photoLibraryOnlyAddPermission: Observable<Bool?> { get }
     var selectedImg: Observable<ImageWithMetadata?> { get }
     var needReset: Observable<Void?> { get }
+    var isDownloadSuccess: Bool { get set }
 }
 
 // MainViewModel 타입: Input과 Output을 모두 결합한 타입
@@ -64,6 +65,7 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     let photoLibraryOnlyAddPermission: Observable<Bool?> = Observable(nil) // 사진 라이브러리 추가 권한 상태
     var selectedImg: Observable<ImageWithMetadata?> = Observable(nil) // 선택된 이미지
     var needReset: Observable<Void?> = Observable(nil)
+    var isDownloadSuccess: Bool = false
     
     // MARK: - Init (초기화)
     init(

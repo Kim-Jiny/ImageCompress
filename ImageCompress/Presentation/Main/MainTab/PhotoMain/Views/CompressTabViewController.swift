@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class CompressTabViewController: UIViewController, StoryboardInstantiable {
     var viewModel: MainViewModel?
@@ -90,8 +91,8 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
             }
             
             viewModel.imageSave(completion: { isSuccess in
+                self?.viewModel?.isDownloadSuccess = isSuccess
                 print(isSuccess)
-                // TODO: - 광고가 닫히고 팝업을 띄워줘야함.
                 DispatchQueue.main.async {
                     self?.showSaveAlert()
                 }
@@ -206,7 +207,7 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func saveBtn(_ sender: Any) {
-        AdmobManager.shared.showRewardAds {
+        AdmobManager.shared.showRewardAds(adsDelegate: self) {
             self.viewModel?.checkPhotoLibraryOnlyAddPermission()
         }
     }
@@ -228,3 +229,28 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     
 }
 
+extension CompressTabViewController: GADFullScreenContentDelegate {
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+        // 광고가 준비되지 않은 상태에서도 동작해야함.
+        self.viewModel?.checkPhotoLibraryOnlyAddPermission()
+    }
+    
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+        // 광고가 표시될 때
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        // 광고를 닫은경우 - 광고 리워드가 지급되었으면 이미지 다운로드완료 팝업을 띄워야함.
+        if (self.viewModel?.isDownloadSuccess ?? false) {
+            DispatchQueue.main.async {
+                self.showSaveAlert()
+            }
+        }
+    }
+}

@@ -81,17 +81,17 @@ class AdmobManager: NSObject {
                 rewardedInterstitialAd = try await GADRewardedInterstitialAd.load(
                     withAdUnitID: type.getKey, request: GADRequest())
                 
-                self.rewardedInterstitialAd?.fullScreenContentDelegate = self
             } catch {
                 print("Failed to load rewarded interstitial ad with error: \(error.localizedDescription)")
             }
         }
     }
     
-    func showRewardAds(_ completion: @escaping () -> Void) {
+    func showRewardAds(adsDelegate: GADFullScreenContentDelegate, _ completion: @escaping () -> Void) {
         guard let rewardedInterstitialAd = rewardedInterstitialAd else {
             return print("Ad wasn't ready.")
         }
+        self.rewardedInterstitialAd?.fullScreenContentDelegate = adsDelegate
         
         // The UIViewController parameter is an optional.
         rewardedInterstitialAd.present(fromRootViewController: nil) {
@@ -131,26 +131,4 @@ extension AdmobManager: GADBannerViewDelegate {
         print("bannerViewDidDismissScreen")
     }
     
-}
-
-extension AdmobManager: GADFullScreenContentDelegate {
-    
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-        print(error.localizedDescription)
-        //TODO: 광고가 안나오는 상황에도 동작 해야함.
-    }
-    
-    /// Tells the delegate that the ad will present full screen content.
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-    }
-    
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        
-        print("Ad did dismiss full screen content.")
-        print(ad)
-    }
 }
