@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "30BBA9ED2CB501E300A84090"
-               BuildableName = "ImageCompress.app"
+               BuildableName = "LitePhoto.app"
                BlueprintName = "ImageCompress"
                ReferencedContainer = "container:ImageCompress.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30BBA9ED2CB501E300A84090"
-            BuildableName = "ImageCompress.app"
+            BuildableName = "LitePhoto.app"
             BlueprintName = "ImageCompress"
             ReferencedContainer = "container:ImageCompress.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30BBA9ED2CB501E300A84090"
-            BuildableName = "ImageCompress.app"
+            BuildableName = "LitePhoto.app"
             BlueprintName = "ImageCompress"
             ReferencedContainer = "container:ImageCompress.xcodeproj">
          </BuildableReference>
