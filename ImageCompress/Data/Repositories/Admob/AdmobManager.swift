@@ -11,16 +11,23 @@ import AdSupport
 import AppTrackingTransparency
 
 class AdmobManager: NSObject {
-    private let isFreeApp = false
+    
+    private let isFreeApp = true
+    private var rewardedInterstitialAd: GADRewardedInterstitialAd?
     static let shared : AdmobManager = AdmobManager()
     
-    func setATT(completion: @escaping (Bool) -> Void) {
+    override init() {
+        super.init()
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    }
+    
+    func setATT() {
         // ATT 권한 요청
         ATTrackingManager.requestTrackingAuthorization { status in
             switch status {
             case .authorized:
                 print("사용자가 광고 추적을 허용했습니다.")
-                completion(true)
                 return
             case .denied:
                 print("사용자가 광고 추적을 거부했습니다.")
@@ -31,8 +38,6 @@ class AdmobManager: NSObject {
             @unknown default:
                 print("알 수 없는 상태")
             }
-            
-            completion(false)
             return
         }
     }
@@ -65,14 +70,35 @@ class AdmobManager: NSObject {
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
         bannerView.delegate = self
-        switch type {
-        case .main:
-            bannerView.adUnitID = AdmobConfig.Banner.mainKey
-        case .list:
-            bannerView.adUnitID = AdmobConfig.Banner.listKey
-        }
+        bannerView.adUnitID = type.getKey
         bannerView.rootViewController = sender
         bannerView.load(GADRequest())
+    }
+    
+    func setRewardAds(_ sender: UIViewController,_ type: AdmobType) {
+        Task {
+            do {
+                rewardedInterstitialAd = try await GADRewardedInterstitialAd.load(
+                    withAdUnitID: type.getKey, request: GADRequest())
+                
+                self.rewardedInterstitialAd?.fullScreenContentDelegate = self
+            } catch {
+                print("Failed to load rewarded interstitial ad with error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func showRewardAds(_ completion: @escaping () -> Void) {
+        guard let rewardedInterstitialAd = rewardedInterstitialAd else {
+            return print("Ad wasn't ready.")
+        }
+        
+        // The UIViewController parameter is an optional.
+        rewardedInterstitialAd.present(fromRootViewController: nil) {
+            let reward = rewardedInterstitialAd.adReward
+            print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+            completion()
+        }
     }
     
     deinit {
@@ -80,7 +106,7 @@ class AdmobManager: NSObject {
     }
 }
 
-extension AdmobManager : GADBannerViewDelegate {
+extension AdmobManager: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("bannerViewDidReceiveAd")
     }
@@ -105,4 +131,26 @@ extension AdmobManager : GADBannerViewDelegate {
         print("bannerViewDidDismissScreen")
     }
     
+}
+
+extension AdmobManager: GADFullScreenContentDelegate {
+    
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+        print(error.localizedDescription)
+        //TODO: 광고가 안나오는 상황에도 동작 해야함.
+    }
+    
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        
+        print("Ad did dismiss full screen content.")
+        print(ad)
+    }
 }

@@ -75,7 +75,8 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     }
     
     private func setupAdView() {
-        AdmobManager.shared.setMainBanner(adView, self, .main)
+        AdmobManager.shared.setMainBanner(adView, self, .mainBanner)
+        AdmobManager.shared.setRewardAds(self, .createPage)
     }
      
     private func bind(to viewModel: MainViewModel) {
@@ -90,10 +91,13 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
             
             viewModel.imageSave(completion: { isSuccess in
                 print(isSuccess)
+                // TODO: - 광고가 닫히고 팝업을 띄워줘야함.
                 DispatchQueue.main.async {
                     self?.showSaveAlert()
                 }
             })
+            
+            AdmobManager.shared.setRewardAds(self!, .createPage)
         }
         viewModel.photoLibraryPermission.observe(on: self) { [weak self] hasPermission in
             guard let hasPermission = hasPermission else { return }
@@ -138,7 +142,6 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
             self?.emptyView.isHidden = !isEmpty
             self?.infoView.isHidden = isEmpty
             self?.settingView.isHidden = isEmpty
-            //TODO: 저장버튼 활성화
             self?.saveView.isUserInteractionEnabled = !isEmpty
             self?.saveView.alpha = isEmpty ? 0.5 : 1
         }
@@ -203,7 +206,9 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func saveBtn(_ sender: Any) {
-        self.viewModel?.checkPhotoLibraryOnlyAddPermission()
+        AdmobManager.shared.showRewardAds {
+            self.viewModel?.checkPhotoLibraryOnlyAddPermission()
+        }
     }
     
     @IBAction func qualitySg(_ sender: Any) {
