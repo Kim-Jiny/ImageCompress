@@ -46,6 +46,7 @@
 "email_error_body" = "An unknown error occurred.";
 
 "contact_us" = "Contact Us";
+"photo_extension_settings" = "Photo extension settings";
 "latest_version" = "This is the latest version.";
 "not_latest_version" = "Latest version on store: %@";
 "current_version" = "Current Version: %@";

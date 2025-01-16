@@ -44,6 +44,7 @@
 "email_error_body" = "Đã xảy ra lỗi không xác định.";
 
 "contact_us" = "Liên hệ chúng tôi";
+"photo_extension_settings" = "Cài đặt định dạng ảnh";
 "latest_version" = "Bạn đang sử dụng phiên bản mới nhất.";
 "not_latest_version" = "Phiên bản mới nhất có sẵn trên cửa hàng: %@";
 "current_version" = "Phiên bản hiện tại: %@";

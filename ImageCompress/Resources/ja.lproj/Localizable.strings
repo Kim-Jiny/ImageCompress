@@ -44,6 +44,7 @@
 "email_error_body" = "不明なエラーが発生しました。";
 
 "contact_us" = "お問い合わせ";
+"photo_extension_settings" = "写真形式設定";
 "latest_version" = "これは最新バージョンです。";
 "not_latest_version" = "ストアの最新バージョン: %@";
 "current_version" = "現在のバージョン: %@";

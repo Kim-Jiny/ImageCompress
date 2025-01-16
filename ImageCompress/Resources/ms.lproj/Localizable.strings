@@ -44,6 +44,7 @@
 "email_error_body" = "Kesalahan yang tidak diketahui berlaku.";
 
 "contact_us" = "Hubungi kami";
+"photo_extension_settings" = "Tetapan format foto";
 "latest_version" = "Anda menggunakan versi terkini.";
 "not_latest_version" = "Versi terkini tersedia di kedai: %@";
 "current_version" = "Versi semasa: %@";

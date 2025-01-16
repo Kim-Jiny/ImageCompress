@@ -58,9 +58,8 @@ class AdmobManager: NSObject {
         let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
         bannerView = GADBannerView(adSize: adaptiveSize)
         adView.addSubview(bannerView)
-        if let st = adView.superview as? UIStackView {
+        if let _ = adView.superview as? UIStackView {
             adView.isHidden = false
-            st.setCustomSpacing(10, after: adView)
         }else {
             adView.snp.updateConstraints {
                 $0.height.equalTo(55)

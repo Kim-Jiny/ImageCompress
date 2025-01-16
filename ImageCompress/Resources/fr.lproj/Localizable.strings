@@ -44,6 +44,7 @@
 "email_error_body" = "Une erreur inconnue s'est produite.";
 
 "contact_us" = "Contactez-nous";
+"photo_extension_settings" = "Paramètres du format de photo";
 "latest_version" = "C'est la dernière version.";
 "not_latest_version" = "Dernière version en magasin : %@";
 "current_version" = "Version actuelle : %@";

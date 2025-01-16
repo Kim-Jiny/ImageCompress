@@ -44,6 +44,7 @@
 "email_error_body" = "알 수 없는 오류가 발생했습니다.";
 
 "contact_us" = "문의하기";
+"photo_extension_settings" = "사진 확장자 설정";
 "latest_version" = "최신 버전입니다.";
 "not_latest_version" = "스토어의 최신 버전: %@";
 "current_version" = "현재 버전: %@";

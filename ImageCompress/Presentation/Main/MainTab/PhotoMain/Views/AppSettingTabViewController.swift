@@ -17,16 +17,22 @@ class AppSettingTabViewController: UIViewController, StoryboardInstantiable, MFM
     @IBOutlet weak var nowAppVersion: UILabel!
     @IBOutlet weak var newAppVersion: UILabel!
     @IBOutlet weak var safeAreaTopConstraints: NSLayoutConstraint!
+    @IBOutlet weak var adView: UIView!
     
     @IBOutlet weak var contactUsLB: UILabel!
+    @IBOutlet weak var extensionLB: UILabel!
+    @IBOutlet weak var extensionBtn: UIButton!
+    @IBOutlet weak var imageFormatLB: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCV()
+        setupAdView()
     }
     
     private func setupCV() {
         contactUsLB.text = NSLocalizedString("contact_us", comment:"")
+        extensionLB.text = NSLocalizedString("photo_extension_settings", comment:"")
         
         appUpdateBtn.setTitle(NSLocalizedString("update_new_version", comment: ""), for: .normal)
         appUpdateBtn.layer.cornerRadius = 20
@@ -65,6 +71,17 @@ class AppSettingTabViewController: UIViewController, StoryboardInstantiable, MFM
             appUpdateView.isHidden = true
         }
         
+        extensionBtn.menu = createMenu()
+        extensionBtn.showsMenuAsPrimaryAction = true
+        if let type: String = UserDefaultsManager.shared.getData(forKey: "imageExtensionType") {
+            imageFormatLB.text = type
+        } else {
+            imageFormatLB.text = "jpeg"
+        }
+    }
+    
+    private func setupAdView() {
+        AdmobManager.shared.setMainBanner(adView, self, .settingBanner)
     }
     
     private func getNowVer() -> String? {
@@ -79,6 +96,24 @@ class AppSettingTabViewController: UIViewController, StoryboardInstantiable, MFM
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+    
+    
+    private func createMenu() -> UIMenu {
+        // 메뉴 액션 정의
+        let option1 = UIAction(title: "jpeg", image: nil) { _ in
+            UserDefaultsManager.shared.setData("jpeg", forKey: "imageExtensionType")
+            self.imageFormatLB.text = "jpeg"
+        }
+        
+        let option2 = UIAction(title: "png", image: nil) { _ in
+            UserDefaultsManager.shared.setData("png", forKey: "imageExtensionType")
+            self.imageFormatLB.text = "png"
+        }
+        
+        // 메뉴 생성
+        return UIMenu(title: NSLocalizedString("photo_extension_settings", comment: ""), children: [option1, option2])
+    }
+    
     @IBAction func sendDeveloper(_ sender: Any) {
         
         // 이메일 지원 확인

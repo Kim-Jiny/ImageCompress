@@ -53,9 +53,16 @@ class ImageUseCaseImpl: ImageUseCase {
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         print("img quality \(imageWithMetadata.imgQuality)")
-        guard let resizedImageData = resizedImage?.jpegData(compressionQuality: imageWithMetadata.imgQuality == 1 ? 0.8 : imageWithMetadata.imgQuality) else { return nil }
-//
-        return ImageWithMetadata(imgName: imageWithMetadata.imgName, originImgData: imageWithMetadata.originImgData, imgData: resizedImageData, metaData: imageWithMetadata.metaData, asset: imageWithMetadata.asset, imgSize: targetSize, imgQuality: imageWithMetadata.imgQuality)
+        if let type: String = UserDefaultsManager.shared.getData(forKey: "imageExtensionType"), type == "png" {
+            guard let jpegImageData = resizedImage?.jpegData(compressionQuality: imageWithMetadata.imgQuality == 1 ? 0.8 : imageWithMetadata.imgQuality) else { return nil }
+            
+            guard let jpegImage = UIImage(data: jpegImageData),let resizedImageData = jpegImage.pngData() else { return nil }
+            return ImageWithMetadata(imgName: imageWithMetadata.imgName, originImgData: imageWithMetadata.originImgData, imgData: resizedImageData, metaData: imageWithMetadata.metaData, asset: imageWithMetadata.asset, imgSize: targetSize, imgQuality: imageWithMetadata.imgQuality)
+        }else {
+            guard let resizedImageData = resizedImage?.jpegData(compressionQuality: imageWithMetadata.imgQuality == 1 ? 0.8 : imageWithMetadata.imgQuality) else { return nil }
+            
+            return ImageWithMetadata(imgName: imageWithMetadata.imgName, originImgData: imageWithMetadata.originImgData, imgData: resizedImageData, metaData: imageWithMetadata.metaData, asset: imageWithMetadata.asset, imgSize: targetSize, imgQuality: imageWithMetadata.imgQuality)
+        }
     }
     
     
