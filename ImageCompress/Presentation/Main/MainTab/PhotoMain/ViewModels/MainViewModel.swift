@@ -34,6 +34,10 @@ protocol MainViewModelInput {
     // 새 API - ImagePickerDelegate에서 호출
     func selectImage(data: Data, name: String, metadata: [String: Any], creationDate: Date?)
     func cancelImageSelection()
+
+    // 다중 이미지 API
+    func selectCurrentImageAt(index: Int)
+    func removeImageAt(index: Int)
 }
 
 /// Output 프로토콜: 뷰모델에서 뷰로 전달될 데이터들
@@ -45,6 +49,11 @@ protocol MainViewModelOutput {
     var currentImage: Observable<CompressedImage?> { get }
     var needReset: Observable<Void?> { get }
     var isDownloadSuccess: Bool { get set }
+
+    // 다중 이미지 지원
+    var selectedImages: Observable<[CompressedImage]> { get }
+    var currentImageIndex: Observable<Int> { get }
+    var totalImageCount: Observable<Int> { get }
 }
 
 /// MainViewModel 타입: Input과 Output을 모두 결합한 타입
@@ -77,6 +86,14 @@ final class DefaultMainViewModel: NSObject, MainViewModel {
     var currentImage: Observable<CompressedImage?> = Observable(nil)
     var needReset: Observable<Void?> = Observable(nil)
     var isDownloadSuccess: Bool = false
+
+    // 다중 이미지 지원
+    var selectedImages: Observable<[CompressedImage]> = Observable([])
+    var currentImageIndex: Observable<Int> = Observable(0)
+    var totalImageCount: Observable<Int> = Observable(0)
+
+    // 다중 이미지 설정 (이미지 선택 개수 제한)
+    private let maxImageSelection: Int = 20
 
     // MARK: - Init (새 클린 아키텍처용)
     init(
@@ -173,11 +190,14 @@ extension DefaultMainViewModel {
         load()
     }
 
-    // ImagePicker 열기
+    // ImagePicker 열기 (다중 이미지 지원)
     func openImagePicker(_ sender: UIViewController) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.imagePickerCoordinator = ImagePickerCoordinator(presenter: sender)
+            self.imagePickerCoordinator = ImagePickerCoordinator(
+                presenter: sender,
+                maxSelection: self.maxImageSelection
+            )
             self.imagePickerCoordinator?.delegate = self
             self.imagePickerCoordinator?.presentPicker()
         }
@@ -225,7 +245,15 @@ extension DefaultMainViewModel {
     }
 
     func imageSave(completion: @escaping (Bool) -> Void) {
-        // 새 API 우선
+        let images = selectedImages.value
+
+        // 다중 이미지 저장
+        if !images.isEmpty {
+            saveMultipleImages(images, completion: completion)
+            return
+        }
+
+        // 단일 이미지 저장 (하위 호환)
         if let image = currentImage.value {
             imageSaveUseCase.save(image) { result in
                 switch result {
@@ -253,14 +281,56 @@ extension DefaultMainViewModel {
         }
     }
 
+    private func saveMultipleImages(_ images: [CompressedImage], completion: @escaping (Bool) -> Void) {
+        let group = DispatchGroup()
+        var allSuccess = true
+
+        for image in images {
+            group.enter()
+            imageSaveUseCase.save(image) { result in
+                defer { group.leave() }
+                if case .failure(let error) = result {
+                    print("이미지 저장 실패: \(error)")
+                    allSuccess = false
+                }
+            }
+        }
+
+        group.notify(queue: .main) {
+            completion(allSuccess)
+        }
+    }
+
     func changeImageQuality(level: Int) {
-        // 새 API 우선
+        let quality = ImageQuality.from(level: level)
+
+        // 다중 이미지 처리
+        if !selectedImages.value.isEmpty {
+            var updatedImages: [CompressedImage] = []
+            for image in selectedImages.value {
+                if case .success(let updated) = imageCompressUseCase.adjustQuality(image, quality: quality) {
+                    updatedImages.append(updated)
+                } else {
+                    updatedImages.append(image)
+                }
+            }
+            selectedImages.value = updatedImages
+            totalImageCount.value = updatedImages.count
+
+            // 현재 선택된 이미지 업데이트
+            let index = currentImageIndex.value
+            if index < updatedImages.count {
+                currentImage.value = updatedImages[index]
+                syncToLegacy(from: updatedImages[index])
+            }
+            return
+        }
+
+        // 단일 이미지 (하위 호환)
         if let image = currentImage.value {
-            let quality = ImageQuality.from(level: level)
             let result = imageCompressUseCase.adjustQuality(image, quality: quality)
             if case .success(let updated) = result {
                 currentImage.value = updated
-                // Legacy 동기화
                 syncToLegacy(from: updated)
             }
             return
@@ -274,12 +344,33 @@ extension DefaultMainViewModel {
     }
 
     func changeImageSize(level: Int) {
-        // 새 API 우선
+        // 다중 이미지 처리
+        if !selectedImages.value.isEmpty {
+            var updatedImages: [CompressedImage] = []
+            for image in selectedImages.value {
+                if case .success(let updated) = imageCompressUseCase.resize(image, level: level) {
+                    updatedImages.append(updated)
+                } else {
+                    updatedImages.append(image)
+                }
+            }
+            selectedImages.value = updatedImages
+            totalImageCount.value = updatedImages.count
+
+            // 현재 선택된 이미지 업데이트
+            let index = currentImageIndex.value
+            if index < updatedImages.count {
+                currentImage.value = updatedImages[index]
+                syncToLegacy(from: updatedImages[index])
+            }
+            return
+        }
+
+        // 단일 이미지 (하위 호환)
         if let image = currentImage.value {
             let result = imageCompressUseCase.resize(image, level: level)
             if case .success(let updated) = result {
                 currentImage.value = updated
-                // Legacy 동기화
                 syncToLegacy(from: updated)
             }
             return
@@ -294,6 +385,39 @@ extension DefaultMainViewModel {
             height: img.size.height * factors[level]
         )
         selectedImg.value = legacyImageUseCase?.resizeImage(data, targetSize: targetSize)
+    }
+
+    // MARK: - 다중 이미지 API
+
+    func selectCurrentImageAt(index: Int) {
+        guard index >= 0 && index < selectedImages.value.count else { return }
+        currentImageIndex.value = index
+        let image = selectedImages.value[index]
+        currentImage.value = image
+        syncToLegacy(from: image)
+    }
+
+    func removeImageAt(index: Int) {
+        guard index >= 0 && index < selectedImages.value.count else { return }
+
+        var images = selectedImages.value
+        images.remove(at: index)
+        selectedImages.value = images
+        totalImageCount.value = images.count
+
+        if images.isEmpty {
+            // 모든 이미지 제거됨
+            currentImage.value = nil
+            selectedImg.value = nil
+            currentImageIndex.value = 0
+        } else {
+            // 현재 인덱스 조정
+            let newIndex = min(currentImageIndex.value, images.count - 1)
+            currentImageIndex.value = newIndex
+            let image = images[newIndex]
+            currentImage.value = image
+            syncToLegacy(from: image)
+        }
     }
 
     // MARK: - New API (ImagePickerDelegate에서 호출)
@@ -359,6 +483,47 @@ extension DefaultMainViewModel: ImagePickerDelegate {
 
     func didSelectImage(_ imageData: Data, name: String, metadata: [String : Any], creationDate: Date?) {
         selectImage(data: imageData, name: name, metadata: metadata, creationDate: creationDate)
+    }
+
+    func didSelectImages(_ images: [SelectedImageInfo]) {
+        needReset.value = ()
+
+        var compressedImages: [CompressedImage] = []
+
+        for imageInfo in images {
+            guard let size = imageProcessingRepository.getImageSize(from: imageInfo.data) else {
+                continue
+            }
+
+            let compressedImage = CompressedImage(
+                name: imageInfo.name,
+                originalData: imageInfo.data,
+                compressedData: imageInfo.data,
+                metadata: ImageMetadata(
+                    creationDate: imageInfo.creationDate,
+                    properties: imageInfo.metadata
+                ),
+                size: size,
+                quality: .original,
+                format: .jpeg
+            )
+            compressedImages.append(compressedImage)
+        }
+
+        if compressedImages.isEmpty {
+            cancelImageSelection()
+            return
+        }
+
+        // 다중 이미지 저장
+        selectedImages.value = compressedImages
+        totalImageCount.value = compressedImages.count
+        currentImageIndex.value = 0
+
+        // 첫 번째 이미지를 현재 이미지로 설정
+        let firstImage = compressedImages[0]
+        currentImage.value = firstImage
+        syncToLegacy(from: firstImage)
     }
 
     func didCancelSelection() {

@@ -56,6 +56,10 @@ final class MainSceneDIContainer {
         DefaultAppVersionRepository()
     }
 
+    private func makeImageConversionRepository() -> ImageConversionRepository {
+        DefaultImageConversionRepository()
+    }
+
     // MARK: - UseCases
     private func makeImageCompressUseCase() -> ImageCompressUseCase {
         DefaultImageCompressUseCase(
@@ -82,6 +86,13 @@ final class MainSceneDIContainer {
         DefaultFetchAppVersionUseCase(repository: makeAppVersionRepository())
     }
 
+    private func makeHEICConversionUseCase() -> HEICConversionUseCase {
+        DefaultHEICConversionUseCase(
+            conversionRepository: makeImageConversionRepository(),
+            imageRepository: makeImageRepository()
+        )
+    }
+
     // MARK: - ViewModel
     func makeMainViewModel(actions: MainViewModelActions? = nil) -> MainViewModel {
         DefaultMainViewModel(
@@ -94,9 +105,27 @@ final class MainSceneDIContainer {
         )
     }
 
+    func makeHEICConversionViewModel() -> HEICConversionViewModel {
+        DefaultHEICConversionViewModel(
+            heicConversionUseCase: makeHEICConversionUseCase(),
+            permissionUseCase: makePermissionUseCase()
+        )
+    }
+
     // MARK: - ViewController
     func makeMainViewController(actions: MainViewModelActions? = nil) -> MainViewController {
-        MainViewController.create(with: makeMainViewModel(actions: actions), adService: adService)
+        MainViewController.create(
+            with: makeMainViewModel(actions: actions),
+            adService: adService,
+            diContainer: self
+        )
+    }
+
+    func makeHEICConversionViewController() -> HEICConversionViewController {
+        let vc = HEICConversionViewController()
+        vc.viewModel = makeHEICConversionViewModel()
+        vc.adService = adService
+        return vc
     }
 
     // MARK: - Coordinator

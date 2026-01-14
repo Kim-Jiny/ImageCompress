@@ -13,17 +13,20 @@ class MainViewController: UITabBarController, StoryboardInstantiable {
 
     private var viewModel: MainViewModel!
     private var adService: AdService?
+    private var diContainer: MainSceneDIContainer?
 
     // MARK: - Lifecycle
 
     /// 새로운 Clean Architecture 생성 메서드
     static func create(
         with viewModel: MainViewModel,
-        adService: AdService? = nil
+        adService: AdService? = nil,
+        diContainer: MainSceneDIContainer? = nil
     ) -> MainViewController {
         let view = MainViewController.instantiateViewController()
         view.viewModel = viewModel
         view.adService = adService
+        view.diContainer = diContainer
         return view
     }
 
@@ -53,27 +56,20 @@ class MainViewController: UITabBarController, StoryboardInstantiable {
         // AdService가 없으면 기본 AdmobService 사용
         let effectiveAdService = adService ?? AdmobService.shared
 
-        // 각 ViewController를 xib에서 불러오기
-        let firstVC = CompressTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
-        firstVC.tabBarItem = UITabBarItem(title: NSLocalizedString("compress", comment: "용량 압축"), image: UIImage(systemName: "rectangle.compress.vertical"), tag: 0)
-        firstVC.viewModel = viewModel
-        firstVC.adService = effectiveAdService
+        // 1. 압축 탭 (다중 이미지 지원)
+        let compressVC = CompressTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
+        compressVC.tabBarItem = UITabBarItem(title: NSLocalizedString("compress", comment: "용량 압축"), image: UIImage(systemName: "rectangle.compress.vertical"), tag: 0)
+        compressVC.viewModel = viewModel
+        compressVC.adService = effectiveAdService
 
-//        let secondVC = ScanQRTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
-//        secondVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Change Info", comment: "정보 수정"), image: UIImage(systemName: "info.square"), tag: 1)
-//        secondVC.viewModel = viewModel
-
-//        let thirdVC = ResizeTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
-//        thirdVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Resize", comment: "사이즈 수정"), image: UIImage(systemName: "square.resize"), tag: 2)
-//        thirdVC.viewModel = viewModel
-
-        let fourthVC = AppSettingTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
-        fourthVC.tabBarItem = UITabBarItem(title: NSLocalizedString("setting", comment: "설정"), image: UIImage(systemName: "gearshape"), tag: 3)
-        fourthVC.viewModel = viewModel
-        fourthVC.adService = effectiveAdService
+        // 2. 설정 탭
+        let settingVC = AppSettingTabViewController.instantiateViewController(from: UIStoryboard(name: "MainViewController", bundle: nil))
+        settingVC.tabBarItem = UITabBarItem(title: NSLocalizedString("setting", comment: "설정"), image: UIImage(systemName: "gearshape"), tag: 1)
+        settingVC.viewModel = viewModel
+        settingVC.adService = effectiveAdService
 
         // 뷰 컨트롤러들을 탭 바에 추가
-        self.viewControllers = [firstVC, fourthVC]
+        self.viewControllers = [compressVC, settingVC]
         self.tabBar.tintColor = .speedMain0
         self.tabBar.backgroundColor = .speedMain3
 

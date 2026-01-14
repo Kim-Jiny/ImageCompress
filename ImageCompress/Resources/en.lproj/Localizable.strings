@@ -53,3 +53,19 @@
 "update_new_version" = "Update to the Latest Version";
 
 "error" = "Error";
+
+// HEIC Conversion
+"heic_convert" = "HEIC Convert";
+"heic_conversion_title" = "HEIC → JPEG Conversion";
+"heic_conversion_desc" = "Batch convert multiple HEIC images to JPEG or PNG.";
+"select_images" = "Select Images";
+"output_format" = "Output Format";
+"image_quality" = "Image Quality";
+"high" = "High";
+"convert" = "Convert";
+"save_all" = "Save All";
+"save_complete" = "Save Complete";
+"images_saved_format" = "%d images have been saved.";
+
+// Multi-image selection
+"multi_image_selected" = "%d images selected";

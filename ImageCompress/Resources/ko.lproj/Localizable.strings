@@ -51,3 +51,19 @@
 "update_new_version" = "최신 버전으로 업데이트";
 
 "error" = "오류";
+
+// HEIC 변환
+"heic_convert" = "HEIC 변환";
+"heic_conversion_title" = "HEIC → JPEG 변환";
+"heic_conversion_desc" = "여러 HEIC 이미지를 JPEG 또는 PNG로 일괄 변환합니다.";
+"select_images" = "이미지 선택";
+"output_format" = "출력 포맷";
+"image_quality" = "이미지 품질";
+"high" = "고품질";
+"convert" = "변환하기";
+"save_all" = "모두 저장";
+"save_complete" = "저장 완료";
+"images_saved_format" = "%d개 이미지가 저장되었습니다.";
+
+// 다중 이미지 선택
+"multi_image_selected" = "%d개 이미지가 선택되었습니다";

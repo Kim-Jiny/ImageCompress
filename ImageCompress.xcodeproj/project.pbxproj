@@ -53,7 +53,12 @@
 		30E4AE4F2CEAD53E00B6C503 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE4E2CEAD53E00B6C503 /* Config.swift */; };
 		30E4AE662CEB2D6A00B6C503 /* AdmobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */; };
 		30E4AE732CEC32AE00B6C503 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE722CEC32AE00B6C503 /* UIColor+Extensions.swift */; };
-		/* NEW FILES - Clean Architecture */
+		36D586416515A5B8D022D5E4 /* MultiImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA46E8219CDBD5D961D30087 /* MultiImagePickerCoordinator.swift */; };
+		3A07A8C0A9EC1F7B7E2C7F33 /* HEICConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAFA7D598431A6C39B8DA7 /* HEICConversionViewModel.swift */; };
+		3C76246A738064C44C44F949 /* HEICConversionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0849DCC3AB8B9674B2C0455 /* HEICConversionUseCase.swift */; };
+		6235BB6FFB05BCF1562B86E3 /* DefaultImageConversionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338752AD354D96C3C329D828 /* DefaultImageConversionRepository.swift */; };
+		988AE02AC6E33AC3581AFA0D /* DefaultHEICConversionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655E2091468A68880348EFD /* DefaultHEICConversionUseCase.swift */; };
+		B4661765AE2E10AE184A31D2 /* HEICConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF09B62547F2AF70EDF1AD00 /* HEICConversionViewController.swift */; };
 		CA0000012D000001000000CA /* CompressedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000002D000001000000CA /* CompressedImage.swift */; };
 		CA0000032D000003000000CA /* ImageQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000022D000002000000CA /* ImageQuality.swift */; };
 		CA0000052D000005000000CA /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000042D000004000000CA /* ImageSize.swift */; };
@@ -76,6 +81,7 @@
 		CA0000392D000039000000CA /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000382D000038000000CA /* ImagePickerCoordinator.swift */; };
 		CA0000412D000041000000CA /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000402D000040000000CA /* AppDIContainer.swift */; };
 		CA0000432D000043000000CA /* MainSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000422D000042000000CA /* MainSceneDIContainer.swift */; };
+		E2410B7CC29D244AED847C91 /* ImageConversionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C3F2E84F124B79475CC0B /* ImageConversionRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,7 +163,10 @@
 		30E4AE5F2CEB2B2600B6C503 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobManager.swift; sourceTree = "<group>"; };
 		30E4AE722CEC32AE00B6C503 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		/* NEW FILES - Clean Architecture */
+		338752AD354D96C3C329D828 /* DefaultImageConversionRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultImageConversionRepository.swift; path = ImageCompress/Data/Repositories/DefaultImageConversionRepository.swift; sourceTree = "<group>"; };
+		9655E2091468A68880348EFD /* DefaultHEICConversionUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultHEICConversionUseCase.swift; path = ImageCompress/Domain/UseCases/Implementations/DefaultHEICConversionUseCase.swift; sourceTree = "<group>"; };
+		9AAAFA7D598431A6C39B8DA7 /* HEICConversionViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HEICConversionViewModel.swift; path = ImageCompress/Presentation/HEICConversion/ViewModels/HEICConversionViewModel.swift; sourceTree = "<group>"; };
+		BA46E8219CDBD5D961D30087 /* MultiImagePickerCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultiImagePickerCoordinator.swift; path = ImageCompress/Presentation/ImagePicker/MultiImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		CA0000002D000001000000CA /* CompressedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressedImage.swift; sourceTree = "<group>"; };
 		CA0000022D000002000000CA /* ImageQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageQuality.swift; sourceTree = "<group>"; };
 		CA0000042D000004000000CA /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
@@ -180,6 +189,9 @@
 		CA0000382D000038000000CA /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		CA0000402D000040000000CA /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		CA0000422D000042000000CA /* MainSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDIContainer.swift; sourceTree = "<group>"; };
+		D81C3F2E84F124B79475CC0B /* ImageConversionRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageConversionRepository.swift; path = ImageCompress/Domain/Interfaces/Repositories/ImageConversionRepository.swift; sourceTree = "<group>"; };
+		DF09B62547F2AF70EDF1AD00 /* HEICConversionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HEICConversionViewController.swift; path = ImageCompress/Presentation/HEICConversion/Views/HEICConversionViewController.swift; sourceTree = "<group>"; };
+		F0849DCC3AB8B9674B2C0455 /* HEICConversionUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HEICConversionUseCase.swift; path = ImageCompress/Domain/UseCases/Protocols/HEICConversionUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +221,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0719D75D7C7F3C25273E41D7 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				BA46E8219CDBD5D961D30087 /* MultiImagePickerCoordinator.swift */,
+			);
+			name = ImagePicker;
+			sourceTree = "<group>";
+		};
+		245D2A864FDEAC009C518AA5 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				53669F2360899930E7E8D6BA /* Protocols */,
+				DAE2CFE5CF1DF1BDC64A35ED /* Implementations */,
+			);
+			name = UseCases;
+			sourceTree = "<group>";
+		};
+		302722D17DB5D915E58B1777 /* HEICConversion */ = {
+			isa = PBXGroup;
+			children = (
+				7E9A0806E0EA5F131E545D97 /* ViewModels */,
+				D0C5A43ECB40054722263C9C /* Views */,
+			);
+			name = HEICConversion;
+			sourceTree = "<group>";
+		};
 		303398EB2CE1A92700977E8A /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +264,7 @@
 				30BBAA112CB501E400A84090 /* ImageCompressUITests */,
 				30BBA9EF2CB501E300A84090 /* Products */,
 				30E2BAE52CC2621200BB7057 /* Frameworks */,
+				B721A27B586CF32AE0D42390 /* ImageCompress */,
 			);
 			sourceTree = "<group>";
 		};
@@ -531,7 +570,49 @@
 			path = Admob;
 			sourceTree = "<group>";
 		};
-		/* NEW GROUPS - Clean Architecture */
+		4B59031FDE454366FE1FF4AA /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D81C3F2E84F124B79475CC0B /* ImageConversionRepository.swift */,
+			);
+			name = Repositories;
+			sourceTree = "<group>";
+		};
+		53669F2360899930E7E8D6BA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F0849DCC3AB8B9674B2C0455 /* HEICConversionUseCase.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		5D7392FC3318692CA5C6C35A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0719D75D7C7F3C25273E41D7 /* ImagePicker */,
+				302722D17DB5D915E58B1777 /* HEICConversion */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		7E9A0806E0EA5F131E545D97 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9AAAFA7D598431A6C39B8DA7 /* HEICConversionViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		B721A27B586CF32AE0D42390 /* ImageCompress */ = {
+			isa = PBXGroup;
+			children = (
+				FBDB5193CB7E139B78795211 /* Domain */,
+				DB63419F2CBE54F328A11CBA /* Data */,
+				5D7392FC3318692CA5C6C35A /* Presentation */,
+			);
+			name = ImageCompress;
+			sourceTree = "<group>";
+		};
 		CA00004A2D00004A000000CA /* DIContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,13 +636,6 @@
 				CA000050200000502000000A /* Permission */,
 			);
 			path = DataSources;
-			sourceTree = "<group>";
-		};
-		CA000050200000502000000A /* Permission */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Permission;
 			sourceTree = "<group>";
 		};
 		CA00004D2D00004D000000CA /* Advertising */ = {
@@ -589,6 +663,62 @@
 				CA0000222D000022000000CA /* DefaultImageSaveUseCase.swift */,
 			);
 			path = Implementations;
+			sourceTree = "<group>";
+		};
+		CA000050200000502000000A /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		D0C5A43ECB40054722263C9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF09B62547F2AF70EDF1AD00 /* HEICConversionViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DAE2CFE5CF1DF1BDC64A35ED /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				9655E2091468A68880348EFD /* DefaultHEICConversionUseCase.swift */,
+			);
+			name = Implementations;
+			sourceTree = "<group>";
+		};
+		DB63419F2CBE54F328A11CBA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F137343AF3D409C127547D25 /* Repositories */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		DE3D5C9E25D316CDF4C27797 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				4B59031FDE454366FE1FF4AA /* Repositories */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		F137343AF3D409C127547D25 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				338752AD354D96C3C329D828 /* DefaultImageConversionRepository.swift */,
+			);
+			name = Repositories;
+			sourceTree = "<group>";
+		};
+		FBDB5193CB7E139B78795211 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				245D2A864FDEAC009C518AA5 /* UseCases */,
+				DE3D5C9E25D316CDF4C27797 /* Interfaces */,
+			);
+			name = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -774,7 +904,6 @@
 				3052B1D52D1D2F0A00145BC3 /* UIImage+Extensions.swift in Sources */,
 				30BBA9F42CB501E300A84090 /* SceneDelegate.swift in Sources */,
 				3052B1D32D1D2ABF00145BC3 /* ImageWithMetadata.swift in Sources */,
-				/* NEW FILES - Clean Architecture */
 				CA0000012D000001000000CA /* CompressedImage.swift in Sources */,
 				CA0000032D000003000000CA /* ImageQuality.swift in Sources */,
 				CA0000052D000005000000CA /* ImageSize.swift in Sources */,
@@ -797,6 +926,13 @@
 				CA0000392D000039000000CA /* ImagePickerCoordinator.swift in Sources */,
 				CA0000412D000041000000CA /* AppDIContainer.swift in Sources */,
 				CA0000432D000043000000CA /* MainSceneDIContainer.swift in Sources */,
+				3C76246A738064C44C44F949 /* HEICConversionUseCase.swift in Sources */,
+				E2410B7CC29D244AED847C91 /* ImageConversionRepository.swift in Sources */,
+				988AE02AC6E33AC3581AFA0D /* DefaultHEICConversionUseCase.swift in Sources */,
+				6235BB6FFB05BCF1562B86E3 /* DefaultImageConversionRepository.swift in Sources */,
+				36D586416515A5B8D022D5E4 /* MultiImagePickerCoordinator.swift in Sources */,
+				3A07A8C0A9EC1F7B7E2C7F33 /* HEICConversionViewModel.swift in Sources */,
+				B4661765AE2E10AE184A31D2 /* HEICConversionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,7 +1154,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiny.swift.ImageCompress;
 				PRODUCT_NAME = LitePhoto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1054,7 +1190,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiny.swift.ImageCompress;
 				PRODUCT_NAME = LitePhoto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
