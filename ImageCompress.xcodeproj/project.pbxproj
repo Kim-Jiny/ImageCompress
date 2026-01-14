@@ -53,6 +53,29 @@
 		30E4AE4F2CEAD53E00B6C503 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE4E2CEAD53E00B6C503 /* Config.swift */; };
 		30E4AE662CEB2D6A00B6C503 /* AdmobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */; };
 		30E4AE732CEC32AE00B6C503 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4AE722CEC32AE00B6C503 /* UIColor+Extensions.swift */; };
+		/* NEW FILES - Clean Architecture */
+		CA0000012D000001000000CA /* CompressedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000002D000001000000CA /* CompressedImage.swift */; };
+		CA0000032D000003000000CA /* ImageQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000022D000002000000CA /* ImageQuality.swift */; };
+		CA0000052D000005000000CA /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000042D000004000000CA /* ImageSize.swift */; };
+		CA0000072D000007000000CA /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000062D000006000000CA /* ImageFormat.swift */; };
+		CA0000092D000009000000CA /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000082D000008000000CA /* ImageRepository.swift */; };
+		CA0000112D000011000000CA /* ImageProcessingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000102D000010000000CA /* ImageProcessingRepository.swift */; };
+		CA0000132D000013000000CA /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000122D000012000000CA /* SettingsRepository.swift */; };
+		CA0000152D000015000000CA /* ApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000142D000014000000CA /* ApplicationRepository.swift */; };
+		CA0000172D000017000000CA /* ImageCompressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000162D000016000000CA /* ImageCompressUseCase.swift */; };
+		CA0000192D000019000000CA /* ImageSaveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000182D000018000000CA /* ImageSaveUseCase.swift */; };
+		CA0000212D000021000000CA /* DefaultImageCompressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000202D000020000000CA /* DefaultImageCompressUseCase.swift */; };
+		CA0000232D000023000000CA /* DefaultImageSaveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000222D000022000000CA /* DefaultImageSaveUseCase.swift */; };
+		CA0000252D000025000000CA /* DefaultImageProcessingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000242D000024000000CA /* DefaultImageProcessingRepository.swift */; };
+		CA0000272D000027000000CA /* DefaultImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000262D000026000000CA /* DefaultImageRepository.swift */; };
+		CA0000292D000029000000CA /* DefaultSettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000282D000028000000CA /* DefaultSettingsRepository.swift */; };
+		CA0000312D000031000000CA /* DefaultApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000302D000030000000CA /* DefaultApplicationRepository.swift */; };
+		CA0000332D000033000000CA /* DefaultPermissionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000322D000032000000CA /* DefaultPermissionRepository.swift */; };
+		CA0000352D000035000000CA /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000342D000034000000CA /* AdService.swift */; };
+		CA0000372D000037000000CA /* AdmobService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000362D000036000000CA /* AdmobService.swift */; };
+		CA0000392D000039000000CA /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000382D000038000000CA /* ImagePickerCoordinator.swift */; };
+		CA0000412D000041000000CA /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000402D000040000000CA /* AppDIContainer.swift */; };
+		CA0000432D000043000000CA /* MainSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0000422D000042000000CA /* MainSceneDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +157,29 @@
 		30E4AE5F2CEB2B2600B6C503 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobManager.swift; sourceTree = "<group>"; };
 		30E4AE722CEC32AE00B6C503 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		/* NEW FILES - Clean Architecture */
+		CA0000002D000001000000CA /* CompressedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressedImage.swift; sourceTree = "<group>"; };
+		CA0000022D000002000000CA /* ImageQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageQuality.swift; sourceTree = "<group>"; };
+		CA0000042D000004000000CA /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
+		CA0000062D000006000000CA /* ImageFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormat.swift; sourceTree = "<group>"; };
+		CA0000082D000008000000CA /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		CA0000102D000010000000CA /* ImageProcessingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingRepository.swift; sourceTree = "<group>"; };
+		CA0000122D000012000000CA /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		CA0000142D000014000000CA /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
+		CA0000162D000016000000CA /* ImageCompressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressUseCase.swift; sourceTree = "<group>"; };
+		CA0000182D000018000000CA /* ImageSaveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveUseCase.swift; sourceTree = "<group>"; };
+		CA0000202D000020000000CA /* DefaultImageCompressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageCompressUseCase.swift; sourceTree = "<group>"; };
+		CA0000222D000022000000CA /* DefaultImageSaveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageSaveUseCase.swift; sourceTree = "<group>"; };
+		CA0000242D000024000000CA /* DefaultImageProcessingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageProcessingRepository.swift; sourceTree = "<group>"; };
+		CA0000262D000026000000CA /* DefaultImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageRepository.swift; sourceTree = "<group>"; };
+		CA0000282D000028000000CA /* DefaultSettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsRepository.swift; sourceTree = "<group>"; };
+		CA0000302D000030000000CA /* DefaultApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultApplicationRepository.swift; sourceTree = "<group>"; };
+		CA0000322D000032000000CA /* DefaultPermissionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPermissionRepository.swift; sourceTree = "<group>"; };
+		CA0000342D000034000000CA /* AdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdService.swift; sourceTree = "<group>"; };
+		CA0000362D000036000000CA /* AdmobService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobService.swift; sourceTree = "<group>"; };
+		CA0000382D000038000000CA /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
+		CA0000402D000040000000CA /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		CA0000422D000042000000CA /* MainSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				30BBAA222CB5028000A84090 /* AppFlowCoordinator.swift */,
+				CA00004A2D00004A000000CA /* DIContainer */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -240,6 +287,7 @@
 			children = (
 				30BBAA2F2CB5056A00A84090 /* Utils */,
 				30BBAA292CB5034A00A84090 /* Main */,
+				CA00004B2D00004B000000CA /* ImagePicker */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -367,6 +415,10 @@
 			isa = PBXGroup;
 			children = (
 				3052B1D22D1D2ABF00145BC3 /* ImageWithMetadata.swift */,
+				CA0000002D000001000000CA /* CompressedImage.swift */,
+				CA0000022D000002000000CA /* ImageQuality.swift */,
+				CA0000042D000004000000CA /* ImageSize.swift */,
+				CA0000062D000006000000CA /* ImageFormat.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -384,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				30BBAA792CB911B700A84090 /* Repositories */,
+				CA00004C2D00004C000000CA /* DataSources */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -393,6 +446,11 @@
 			children = (
 				30E4AE4D2CEAD53100B6C503 /* Admob */,
 				30BBAA7A2CB911CE00A84090 /* Utils */,
+				CA0000242D000024000000CA /* DefaultImageProcessingRepository.swift */,
+				CA0000262D000026000000CA /* DefaultImageRepository.swift */,
+				CA0000282D000028000000CA /* DefaultSettingsRepository.swift */,
+				CA0000302D000030000000CA /* DefaultApplicationRepository.swift */,
+				CA0000322D000032000000CA /* DefaultPermissionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -420,6 +478,10 @@
 			children = (
 				303398F62CE1F6F800977E8A /* PermissionRepository.swift */,
 				303399172CE5F61400977E8A /* AppVersionRepository.swift */,
+				CA0000082D000008000000CA /* ImageRepository.swift */,
+				CA0000102D000010000000CA /* ImageProcessingRepository.swift */,
+				CA0000122D000012000000CA /* SettingsRepository.swift */,
+				CA0000142D000014000000CA /* ApplicationRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -428,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				30BBAA862CB913DB00A84090 /* Network */,
+				CA00004D2D00004D000000CA /* Advertising */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -446,6 +509,8 @@
 				303398F42CE1F63A00977E8A /* PermissionUseCase.swift */,
 				303399192CE5F63200977E8A /* FetchAppVersionUseCase.swift */,
 				3052B1D02D1D2A9900145BC3 /* ImageUseCase.swift */,
+				CA00004E2D00004E000000CA /* Protocols */,
+				CA00004F2D00004F000000CA /* Implementations */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -464,6 +529,66 @@
 				30E4AE652CEB2D6A00B6C503 /* AdmobManager.swift */,
 			);
 			path = Admob;
+			sourceTree = "<group>";
+		};
+		/* NEW GROUPS - Clean Architecture */
+		CA00004A2D00004A000000CA /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				CA0000402D000040000000CA /* AppDIContainer.swift */,
+				CA0000422D000042000000CA /* MainSceneDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		CA00004B2D00004B000000CA /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CA0000382D000038000000CA /* ImagePickerCoordinator.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		CA00004C2D00004C000000CA /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				CA000050200000502000000A /* Permission */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		CA000050200000502000000A /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		CA00004D2D00004D000000CA /* Advertising */ = {
+			isa = PBXGroup;
+			children = (
+				CA0000342D000034000000CA /* AdService.swift */,
+				CA0000362D000036000000CA /* AdmobService.swift */,
+			);
+			path = Advertising;
+			sourceTree = "<group>";
+		};
+		CA00004E2D00004E000000CA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CA0000162D000016000000CA /* ImageCompressUseCase.swift */,
+				CA0000182D000018000000CA /* ImageSaveUseCase.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CA00004F2D00004F000000CA /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CA0000202D000020000000CA /* DefaultImageCompressUseCase.swift */,
+				CA0000222D000022000000CA /* DefaultImageSaveUseCase.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -649,6 +774,29 @@
 				3052B1D52D1D2F0A00145BC3 /* UIImage+Extensions.swift in Sources */,
 				30BBA9F42CB501E300A84090 /* SceneDelegate.swift in Sources */,
 				3052B1D32D1D2ABF00145BC3 /* ImageWithMetadata.swift in Sources */,
+				/* NEW FILES - Clean Architecture */
+				CA0000012D000001000000CA /* CompressedImage.swift in Sources */,
+				CA0000032D000003000000CA /* ImageQuality.swift in Sources */,
+				CA0000052D000005000000CA /* ImageSize.swift in Sources */,
+				CA0000072D000007000000CA /* ImageFormat.swift in Sources */,
+				CA0000092D000009000000CA /* ImageRepository.swift in Sources */,
+				CA0000112D000011000000CA /* ImageProcessingRepository.swift in Sources */,
+				CA0000132D000013000000CA /* SettingsRepository.swift in Sources */,
+				CA0000152D000015000000CA /* ApplicationRepository.swift in Sources */,
+				CA0000172D000017000000CA /* ImageCompressUseCase.swift in Sources */,
+				CA0000192D000019000000CA /* ImageSaveUseCase.swift in Sources */,
+				CA0000212D000021000000CA /* DefaultImageCompressUseCase.swift in Sources */,
+				CA0000232D000023000000CA /* DefaultImageSaveUseCase.swift in Sources */,
+				CA0000252D000025000000CA /* DefaultImageProcessingRepository.swift in Sources */,
+				CA0000272D000027000000CA /* DefaultImageRepository.swift in Sources */,
+				CA0000292D000029000000CA /* DefaultSettingsRepository.swift in Sources */,
+				CA0000312D000031000000CA /* DefaultApplicationRepository.swift in Sources */,
+				CA0000332D000033000000CA /* DefaultPermissionRepository.swift in Sources */,
+				CA0000352D000035000000CA /* AdService.swift in Sources */,
+				CA0000372D000037000000CA /* AdmobService.swift in Sources */,
+				CA0000392D000039000000CA /* ImagePickerCoordinator.swift in Sources */,
+				CA0000412D000041000000CA /* AppDIContainer.swift in Sources */,
+				CA0000432D000043000000CA /* MainSceneDIContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,6 +3,7 @@
 //  ImageCompress
 //
 //  Created by 김미진 on 11/11/24.
+//  Refactored for Clean Architecture
 //
 
 import Foundation
@@ -10,30 +11,29 @@ import AVFoundation
 
 /// 카메라 권한 DataSource 프로토콜
 protocol CameraPermissionDataSourceProtocol {
-    func requestPermissionCamera(completion: @escaping (Bool) -> Void)
+    func requestPermission(completion: @escaping (Bool) -> Void)
 }
 
-class CameraPermissionDataSource: CameraPermissionDataSourceProtocol {
-    
-    // 카메라 권한 요청
-    func requestPermissionCamera(completion: @escaping (Bool) -> Void) {
-        // 권한 상태 확인
+/// 카메라 권한 DataSource 구현체
+/// Data Layer - AVFoundation을 사용한 실제 권한 처리
+final class CameraPermissionDataSource: CameraPermissionDataSourceProtocol {
+
+    // MARK: - CameraPermissionDataSourceProtocol
+    func requestPermission(completion: @escaping (Bool) -> Void) {
         let authorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
 
         switch authorizationStatus {
         case .authorized:
-            // 이미 권한이 허용된 경우
             completion(true)
 
         case .notDetermined:
-            // 권한이 결정되지 않은 경우, 권한 요청
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 completion(granted)
             }
 
         case .denied, .restricted:
-            // 권한이 거부되었거나 제한된 경우
             completion(false)
+
         @unknown default:
             completion(false)
         }

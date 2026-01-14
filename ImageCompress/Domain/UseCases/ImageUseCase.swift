@@ -3,18 +3,24 @@
 //  ImageCompress
 //
 //  Created by 김미진 on 12/26/24.
+//  DEPRECATED: Use ImageCompressUseCase and ImageSaveUseCase instead
 //
 
 import Foundation
 import UIKit
 import UniformTypeIdentifiers
 
+/// Legacy UseCase - ImageCompressUseCase와 ImageSaveUseCase로 대체됨
+/// - Note: 새 코드에서는 ImageCompressUseCase와 ImageSaveUseCase를 사용하세요
+@available(*, deprecated, message: "Use ImageCompressUseCase and ImageSaveUseCase instead")
 protocol ImageUseCase {
     func adjustImageQuality(_ imageWithMetadata: ImageWithMetadata, quality: CGFloat) -> ImageWithMetadata?
     func resizeImage(_ imageWithMetadata: ImageWithMetadata, targetSize: CGSize) -> ImageWithMetadata?
     func saveImage(_ imageWithMetadata: ImageWithMetadata, completion: @escaping (Result<Bool, Error>) -> Void)
 }
 
+/// Legacy UseCase 구현체 - DefaultImageCompressUseCase와 DefaultImageSaveUseCase로 대체됨
+@available(*, deprecated, message: "Use DefaultImageCompressUseCase and DefaultImageSaveUseCase instead")
 class ImageUseCaseImpl: ImageUseCase {
     
     func adjustImageQuality(_ imageWithMetadata: ImageWithMetadata, quality: CGFloat) -> ImageWithMetadata? {

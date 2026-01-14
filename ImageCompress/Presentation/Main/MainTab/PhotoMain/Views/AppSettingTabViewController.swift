@@ -1,8 +1,9 @@
 //
-//  MyHistoryTabViewController.swift
+//  AppSettingTabViewController.swift
 //  ImageCompress
 //
 //  Created by 김미진 on 10/11/24.
+//  Refactored for Clean Architecture
 //
 
 import Foundation
@@ -10,8 +11,20 @@ import UIKit
 import MessageUI
 
 class AppSettingTabViewController: UIViewController, StoryboardInstantiable, MFMailComposeViewControllerDelegate {
-    
+
     var viewModel: MainViewModel?
+    var adService: AdService?
+    var settingsRepository: SettingsRepository?
+
+    /// 효과적인 AdService (주입되지 않으면 기본값 사용)
+    private var effectiveAdService: AdService {
+        adService ?? AdmobService.shared
+    }
+
+    /// 효과적인 SettingsRepository (주입되지 않으면 기본값 사용)
+    private var effectiveSettingsRepository: SettingsRepository {
+        settingsRepository ?? DefaultSettingsRepository()
+    }
     @IBOutlet weak var appUpdateView: UIView!
     @IBOutlet weak var appUpdateBtn: UIButton!
     @IBOutlet weak var nowAppVersion: UILabel!
@@ -73,15 +86,12 @@ class AppSettingTabViewController: UIViewController, StoryboardInstantiable, MFM
         
         extensionBtn.menu = createMenu()
         extensionBtn.showsMenuAsPrimaryAction = true
-        if let type: String = UserDefaultsManager.shared.getData(forKey: "imageExtensionType") {
-            imageFormatLB.text = type
-        } else {
-            imageFormatLB.text = "jpeg"
-        }
+        let currentFormat = effectiveSettingsRepository.imageFormat
+        imageFormatLB.text = currentFormat == .png ? "png" : "jpeg"
     }
     
     private func setupAdView() {
-        AdmobManager.shared.setMainBanner(adView, self, .settingBanner)
+        effectiveAdService.configureBanner(in: adView, from: self, type: .settingBanner)
     }
     
     private func getNowVer() -> String? {
@@ -100,16 +110,18 @@ class AppSettingTabViewController: UIViewController, StoryboardInstantiable, MFM
     
     private func createMenu() -> UIMenu {
         // 메뉴 액션 정의
-        let option1 = UIAction(title: "jpeg", image: nil) { _ in
+        let option1 = UIAction(title: "jpeg", image: nil) { [weak self] _ in
+            // Legacy UserDefaultsManager 사용 (SettingsRepository는 읽기 전용으로 사용)
             UserDefaultsManager.shared.setData("jpeg", forKey: "imageExtensionType")
-            self.imageFormatLB.text = "jpeg"
+            self?.imageFormatLB.text = "jpeg"
         }
-        
-        let option2 = UIAction(title: "png", image: nil) { _ in
+
+        let option2 = UIAction(title: "png", image: nil) { [weak self] _ in
+            // Legacy UserDefaultsManager 사용 (SettingsRepository는 읽기 전용으로 사용)
             UserDefaultsManager.shared.setData("png", forKey: "imageExtensionType")
-            self.imageFormatLB.text = "png"
+            self?.imageFormatLB.text = "png"
         }
-        
+
         // 메뉴 생성
         return UIMenu(title: NSLocalizedString("photo_extension_settings", comment: ""), children: [option1, option2])
     }

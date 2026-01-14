@@ -3,6 +3,7 @@
 //  ImageCompress
 //
 //  Created by 김미진 on 10/8/24.
+//  Refactored for Clean Architecture
 //
 
 import UIKit
@@ -10,6 +11,12 @@ import GoogleMobileAds
 
 class CompressTabViewController: UIViewController, StoryboardInstantiable {
     var viewModel: MainViewModel?
+    var adService: AdService?
+
+    /// 효과적인 AdService (주입되지 않으면 기본값 사용)
+    private var effectiveAdService: AdService {
+        adService ?? AdmobService.shared
+    }
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var adView: UIView!
@@ -76,8 +83,8 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     }
     
     private func setupAdView() {
-        AdmobManager.shared.setMainBanner(adView, self, .mainBanner)
-        AdmobManager.shared.setRewardAds(self, .createPage)
+        effectiveAdService.configureBanner(in: adView, from: self, type: .mainBanner)
+        effectiveAdService.loadRewardedAd(type: .rewardedInterstitial)
     }
      
     private func bind(to viewModel: MainViewModel) {
@@ -97,8 +104,9 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
                     self?.showSaveAlert()
                 }
             })
-            
-            AdmobManager.shared.setRewardAds(self!, .createPage)
+
+            // 다음 리워드 광고 준비
+            self?.effectiveAdService.loadRewardedAd(type: .rewardedInterstitial)
         }
         viewModel.photoLibraryPermission.observe(on: self) { [weak self] hasPermission in
             guard let hasPermission = hasPermission else { return }
@@ -207,8 +215,8 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func saveBtn(_ sender: Any) {
-        AdmobManager.shared.showRewardAds(adsDelegate: self) {
-            self.viewModel?.checkPhotoLibraryOnlyAddPermission()
+        effectiveAdService.showRewardedAd(delegate: self) { [weak self] in
+            self?.viewModel?.checkPhotoLibraryOnlyAddPermission()
         }
     }
     
@@ -229,22 +237,21 @@ class CompressTabViewController: UIViewController, StoryboardInstantiable {
     
 }
 
-extension CompressTabViewController: GADFullScreenContentDelegate {
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+// MARK: - AdFullScreenDelegate (Clean Architecture)
+extension CompressTabViewController: AdFullScreenDelegate {
+
+    func adDidFailToPresent() {
         print("Ad did fail to present full screen content.")
         // 광고가 준비되지 않은 상태에서도 동작해야함.
         self.viewModel?.checkPhotoLibraryOnlyAddPermission()
     }
-    
-    /// Tells the delegate that the ad will present full screen content.
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+
+    func adWillPresent() {
         print("Ad will present full screen content.")
         // 광고가 표시될 때
     }
-    
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+
+    func adDidDismiss() {
         print("Ad did dismiss full screen content.")
         // 광고를 닫은경우 - 광고 리워드가 지급되었으면 이미지 다운로드완료 팝업을 띄워야함.
         if (self.viewModel?.isDownloadSuccess ?? false) {
@@ -252,5 +259,21 @@ extension CompressTabViewController: GADFullScreenContentDelegate {
                 self.showSaveAlert()
             }
         }
+    }
+}
+
+// MARK: - GADFullScreenContentDelegate (Legacy Support)
+extension CompressTabViewController: GADFullScreenContentDelegate {
+
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        adDidFailToPresent()
+    }
+
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        adWillPresent()
+    }
+
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        adDidDismiss()
     }
 }

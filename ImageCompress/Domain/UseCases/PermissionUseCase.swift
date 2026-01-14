@@ -6,15 +6,16 @@
 //
 
 import Foundation
-import Photos
-import UIKit
 
+/// 권한 상태
 enum PermissionStatus {
     case authorized
     case denied
     case notDetermined
 }
 
+/// 권한 관리 UseCase 인터페이스
+/// Domain Layer - UIKit 무의존
 protocol PermissionUseCase {
     func openAppSettings()
     func checkCameraPermission(completion: @escaping (Bool) -> Void)
@@ -22,29 +23,42 @@ protocol PermissionUseCase {
     func checkPhotoLibraryPermission(completion: @escaping (Bool) -> Void)
 }
 
-class PermissionUseCaseImpl: PermissionUseCase {
-    private let repository: PermissionRepository
-    init(repository: PermissionRepository) {
-        self.repository = repository
-    }
-    
-    func openAppSettings() {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-        if UIApplication.shared.canOpenURL(settingsURL) {
-            UIApplication.shared.open(settingsURL)
-        }
-    }
-    
-    func checkCameraPermission(completion: @escaping (Bool) -> Void) {
-        repository.requestCameraPermission(completion: completion)
-    }
-    
-    func checkPhotoLibraryAddOnlyPermission(completion: @escaping (Bool) -> Void) {
-        repository.requestPhotoLibraryAddOnlyPermission(completion: completion)
-    }
-    
-    func checkPhotoLibraryPermission(completion: @escaping (Bool) -> Void) {
-        repository.requestPhotoLibraryPermission(completion: completion)
+/// 권한 관리 UseCase 기본 구현
+/// Domain Layer - UIApplication 의존성 제거, ApplicationRepository 사용
+final class DefaultPermissionUseCase: PermissionUseCase {
+
+    // MARK: - Dependencies
+    private let permissionRepository: PermissionRepository
+    private let applicationRepository: ApplicationRepository
+
+    // MARK: - Init
+    init(
+        permissionRepository: PermissionRepository,
+        applicationRepository: ApplicationRepository
+    ) {
+        self.permissionRepository = permissionRepository
+        self.applicationRepository = applicationRepository
     }
 
+    // MARK: - PermissionUseCase
+    func openAppSettings() {
+        applicationRepository.openSettings()
+    }
+
+    func checkCameraPermission(completion: @escaping (Bool) -> Void) {
+        permissionRepository.requestCameraPermission(completion: completion)
+    }
+
+    func checkPhotoLibraryAddOnlyPermission(completion: @escaping (Bool) -> Void) {
+        permissionRepository.requestPhotoLibraryAddOnlyPermission(completion: completion)
+    }
+
+    func checkPhotoLibraryPermission(completion: @escaping (Bool) -> Void) {
+        permissionRepository.requestPhotoLibraryPermission(completion: completion)
+    }
 }
+
+// MARK: - Legacy Support (Deprecated)
+/// 기존 코드 호환을 위한 타입 별칭 - 추후 제거 예정
+@available(*, deprecated, renamed: "DefaultPermissionUseCase")
+typealias PermissionUseCaseImpl = DefaultPermissionUseCase

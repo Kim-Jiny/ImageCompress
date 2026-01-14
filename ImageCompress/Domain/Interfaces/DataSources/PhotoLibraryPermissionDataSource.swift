@@ -8,7 +8,13 @@
 import Foundation
 import Photos
 
-class PhotoLibraryPermissionDataSource {
+/// 사진 라이브러리 권한 DataSource 프로토콜
+protocol PhotoLibraryPermissionDataSourceProtocol {
+    func requestPermissionAndSaveImage(completion: @escaping (Bool) -> Void)
+    func requestPermissionPhotoLibrary(completion: @escaping (Bool) -> Void)
+}
+
+class PhotoLibraryPermissionDataSource: PhotoLibraryPermissionDataSourceProtocol {
     // 사진 라이브러리에 저장 권한 요청 및 저장 기능
     func requestPermissionAndSaveImage(completion: @escaping (Bool) -> Void) {
        let authorizationStatus = PHPhotoLibrary.authorizationStatus(for: .addOnly) // iOS 14 이상에서 .addOnly 사용 가능
